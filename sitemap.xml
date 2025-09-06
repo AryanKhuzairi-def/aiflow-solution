@@ -6,7 +6,7 @@
 
     <!-- Main Homepage -->
     <url>
-        <loc>https://aryankhuzairi-def.github.io/aiflow-solution/</loc>
+        <loc>https://aiflowsolution.netlify.app/</loc>
         <lastmod>2025-09-06</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
@@ -14,41 +14,42 @@
 
     <!-- Accounting & Finance Landing Page -->
     <url>
-        <loc>https://aryankhuzairi-def.github.io/aiflow-solution/accounting_finance_landing.html</loc>
+        <loc>https://aiflowsolution.netlify.app/accounting_finance_landing.html</loc>
         <lastmod>2025-09-06</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
 
-    <!-- Add other landing pages when you create them -->
-    <!-- 
+    <!-- HR & Recruitment Landing Page -->
     <url>
-        <loc>https://aryankhuzairi-def.github.io/aiflow-solution/hr_recruitment_landing.html</loc>
+        <loc>https://aiflowsolution.netlify.app/hr_recruitment_landing.html</loc>
         <lastmod>2025-09-06</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
 
+    <!-- Logistics & Supply Chain Landing Page -->
     <url>
-        <loc>https://aryankhuzairi-def.github.io/aiflow-solution/logistics_supply_chain_landing.html</loc>
+        <loc>https://aiflowsolution.netlify.app/logistics_supply_chain_landing.html</loc>
         <lastmod>2025-09-06</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
 
+    <!-- Customer Service & Sales Landing Page -->
     <url>
-        <loc>https://aryankhuzairi-def.github.io/aiflow-solution/customer_service_sales_landing.html</loc>
+        <loc>https://aiflowsolution.netlify.app/customer_service_sales_landing.html</loc>
         <lastmod>2025-09-06</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
 
+    <!-- Manufacturing & Operations Landing Page -->
     <url>
-        <loc>https://aryankhuzairi-def.github.io/aiflow-solution/manufacturing_operations_landing.html</loc>
+        <loc>https://aiflowsolution.netlify.app/manufacturing_operations_landing.html</loc>
         <lastmod>2025-09-06</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
-    -->
 
 </urlset>
