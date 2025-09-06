@@ -1,0 +1,21 @@
+User-agent: *
+Allow: /
+
+# Block access to admin or private directories (if any)
+Disallow: /admin/
+Disallow: /private/
+Disallow: /*.json$
+
+# Allow Google Bot to access everything
+User-agent: Googlebot
+Allow: /
+
+# Allow Bing Bot to access everything
+User-agent: Bingbot
+Allow: /
+
+# Sitemap location - UPDATE THIS URL TO YOUR ACTUAL GITHUB PAGES URL
+Sitemap: https://AryanKhuzairi-def.github.io/aiflow-solution/sitemap.xml
+
+# Note: You'll need to create a sitemap.xml file separately
+# Additional sitemaps can be added later if needed
