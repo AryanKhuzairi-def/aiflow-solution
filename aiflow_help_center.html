@@ -1,0 +1,1425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help Center - AIFlow Solution Support & Resources</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary-color: #6366f1;
+            --secondary-color: #8b5cf6;
+            --accent-color: #06b6d4;
+            --dark-bg: #0f172a;
+            --light-bg: #f8fafc;
+            --text-dark: #1e293b;
+            --text-light: #64748b;
+            --white: #ffffff;
+            --gradient: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #06b6d4 100%);
+            --success-color: #10b981;
+            --warning-color: #f59e0b;
+            --error-color: #ef4444;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+        
+        /* Navigation - Same as main site */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(99, 102, 241, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .navbar.scrolled {
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--gradient);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 0.75rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .logo-icon::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 20px;
+            height: 20px;
+            background: white;
+            border-radius: 4px;
+            opacity: 0.9;
+        }
+        
+        .logo-icon::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 12px;
+            height: 12px;
+            background: var(--primary-color);
+            border-radius: 2px;
+            z-index: 1;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .cta-button {
+            background: var(--gradient);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 12px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
+        }
+        
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+        
+        .mobile-menu span {
+            width: 25px;
+            height: 3px;
+            background: var(--primary-color);
+            margin: 3px 0;
+            transition: 0.3s;
+            border-radius: 2px;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 8rem 0 4rem;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="0.5" fill="%236366f1" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: #cbd5e1;
+            margin-bottom: 2rem;
+        }
+
+        .search-bar {
+            max-width: 600px;
+            margin: 2rem auto 0;
+            position: relative;
+        }
+
+        .search-bar input {
+            width: 100%;
+            padding: 1.25rem 1.25rem 1.25rem 3.5rem;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            color: white;
+            font-size: 1.1rem;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .search-bar input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .search-bar input:focus {
+            border-color: var(--accent-color);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .search-bar i {
+            position: absolute;
+            left: 1.25rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.1rem;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Quick Help Section */
+        .quick-help {
+            padding: 4rem 0;
+            background: var(--light-bg);
+        }
+
+        .quick-help-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .help-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .help-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .help-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.8rem;
+            margin: 0 auto 1.5rem;
+        }
+
+        .help-card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .help-card p {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+        }
+
+        .help-link {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .help-link:hover {
+            color: var(--secondary-color);
+            transform: translateX(5px);
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            padding: 5rem 0;
+            background: white;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .faq-categories {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .faq-category {
+            padding: 0.75rem 1.5rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 25px;
+            background: white;
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .faq-category:hover,
+        .faq-category.active {
+            border-color: var(--primary-color);
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            margin-bottom: 1rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item.active {
+            border-color: var(--primary-color);
+            box-shadow: 0 4px 20px rgba(99, 102, 241, 0.1);
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            background: white;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: var(--text-dark);
+            transition: all 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background: var(--light-bg);
+        }
+
+        .faq-item.active .faq-question {
+            background: rgba(99, 102, 241, 0.05);
+            color: var(--primary-color);
+        }
+
+        .faq-icon {
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 0 1.5rem 1.5rem;
+            max-height: 200px;
+        }
+
+        .faq-answer p {
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* Support Options */
+        .support-options {
+            padding: 5rem 0;
+            background: var(--light-bg);
+        }
+
+        .support-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .support-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .support-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .support-card.priority {
+            border: 2px solid var(--primary-color);
+            position: relative;
+        }
+
+        .priority-badge {
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--gradient);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .support-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            margin: 0 auto 1.5rem;
+        }
+
+        .support-card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .response-time {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: rgba(99, 102, 241, 0.1);
+            color: var(--primary-color);
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .support-card p {
+            color: var(--text-light);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .support-button {
+            background: var(--gradient);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 12px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .support-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
+        }
+
+        .support-button.secondary {
+            background: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+
+        .support-button.secondary:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        /* Resources Section */
+        .resources-section {
+            padding: 5rem 0;
+            background: white;
+        }
+
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .resource-card {
+            background: white;
+            border: 2px solid #f1f5f9;
+            border-radius: 20px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .resource-card:hover {
+            border-color: var(--primary-color);
+            box-shadow: 0 8px 30px rgba(99, 102, 241, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .resource-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(99, 102, 241, 0.1);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .resource-card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .resource-card p {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .resource-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        /* Status Page */
+        .status-section {
+            padding: 3rem 0;
+            background: rgba(16, 185, 129, 0.05);
+            border-top: 1px solid rgba(16, 185, 129, 0.2);
+        }
+
+        .status-indicator {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .status-dot {
+            width: 12px;
+            height: 12px;
+            background: var(--success-color);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        .status-text {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--success-color);
+        }
+
+        .system-status {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .system-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            background: white;
+            border-radius: 10px;
+            border: 1px solid rgba(16, 185, 129, 0.2);
+        }
+
+        .system-name {
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+
+        .system-status-badge {
+            padding: 0.25rem 0.75rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            background: var(--success-color);
+            color: white;
+        }
+
+        /* Footer - Same as main site */
+        .footer {
+            background: var(--dark-bg);
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: white;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-section ul li a {
+            color: #94a3b8;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-section ul li a:hover {
+            color: var(--accent-color);
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid #334155;
+            padding-top: 1rem;
+            text-align: center;
+            color: #94a3b8;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .quick-help-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .support-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .resources-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .faq-categories {
+                justify-content: flex-start;
+                overflow-x: auto;
+                padding-bottom: 1rem;
+            }
+
+            .system-status {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MNYLCBKK9C"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-MNYLCBKK9C');
+</script>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon"></div>
+                AIFlow Solution
+            </a>
+            
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#services">Services</a></li>
+                <li><a href="index.html#pricing">Pricing</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+            
+            <a href="index.html#contact" class="cta-button">Get Started</a>
+            
+            <div class="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Help Center</h1>
+            <p>Find answers, get support, and learn how to make the most of your AI automation journey with AIFlow Solution.</p>
+            
+            <div class="search-bar">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Search for help articles, guides, or FAQs..." id="helpSearch">
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Help Cards -->
+    <section class="quick-help">
+        <div class="container">
+            <h2 class="section-title">Quick Help</h2>
+            <p class="section-subtitle">Get instant assistance with these popular help topics</p>
+            
+            <div class="quick-help-grid">
+                <div class="help-card fade-in">
+                    <div class="help-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3>Getting Started</h3>
+                    <p>New to AIFlow? Learn the basics of setting up your first automation workflow.</p>
+                    <a href="#" class="help-link">Start Guide <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <div class="help-card fade-in">
+                    <div class="help-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3>Workflow Setup</h3>
+                    <p>Step-by-step instructions for creating and customizing your automation workflows.</p>
+                    <a href="#" class="help-link">View Tutorials <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <div class="help-card fade-in">
+                    <div class="help-icon">
+                        <i class="fas fa-plug"></i>
+                    </div>
+                    <h3>Integrations</h3>
+                    <p>Connect AIFlow with your existing tools and platforms seamlessly.</p>
+                    <a href="#" class="help-link">See Integrations <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <div class="help-card fade-in">
+                    <div class="help-icon">
+                        <i class="fas fa-credit-card"></i>
+                    </div>
+                    <h3>Billing & Plans</h3>
+                    <p>Manage your subscription, billing information, and upgrade your plan.</p>
+                    <a href="#" class="help-link">Billing Help <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <p class="section-subtitle">Find quick answers to the most common questions about AIFlow Solution</p>
+            
+            <div class="faq-categories">
+                <button class="faq-category active" data-category="general">General</button>
+                <button class="faq-category" data-category="technical">Technical</button>
+                <button class="faq-category" data-category="billing">Billing</button>
+                <button class="faq-category" data-category="security">Security</button>
+            </div>
+
+            <div class="faq-container">
+                <div class="faq-item" data-category="general">
+                    <div class="faq-question">
+                        <span>What is AIFlow Solution and how does it work?</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>AIFlow Solution is Malaysia's leading AI automation platform that helps businesses streamline their operations through intelligent workflows. We use n8n automation technology combined with AI to create custom solutions for accounting, HR, logistics, customer service, and manufacturing processes.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-category="general">
+                    <div class="faq-question">
+                        <span>Which industries can benefit from AIFlow automation?</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Our automation solutions are designed for Malaysian SMEs and enterprises across various industries including manufacturing, retail, professional services, healthcare, logistics, and financial services. We offer specialized bundles tailored to each industry's specific needs.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-category="technical">
+                    <div class="faq-question">
+                        <span>How long does it take to set up my first automation workflow?</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Most basic workflows can be set up within 24-48 hours after subscription. Complex enterprise workflows may take 1-2 weeks depending on integration requirements. Our team handles the technical setup while you focus on your business.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-category="technical">
+                    <div class="faq-question">
+                        <span>What platforms and tools does AIFlow integrate with?</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We integrate with 200+ popular platforms including WhatsApp Business API, Gmail, Microsoft Office 365, popular accounting software like SQL Account, CRM systems, e-commerce platforms, and Malaysian banking systems for seamless automation.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-category="billing">
+                    <div class="faq-question">
+                        <span>Can I change or cancel my subscription plan?</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, you can upgrade, downgrade, or cancel your subscription at any time. Plan changes take effect at the next billing cycle. We offer a 30-day money-back guarantee for new subscribers and provide migration assistance when changing plans.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-category="billing">
+                    <div class="faq-question">
+                        <span>What payment methods do you accept?</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We accept major credit cards (Visa, Mastercard), Malaysian online banking (FPX), and bank transfers. For enterprise plans, we also offer invoice billing with NET 30 terms for established businesses.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-category="security">
+                    <div class="faq-question">
+                        <span>How secure is my business data with AIFlow?</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We implement enterprise-grade security with AES-256 encryption, SOC 2 compliance, and ISO 27001 standards. All data is stored in secure Malaysian data centers with regular backups and 24/7 monitoring. We never share your data with third parties.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-category="security">
+                    <div class="faq-question">
+                        <span>Do you comply with Malaysian data protection laws?</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, we fully comply with Malaysia's Personal Data Protection Act (PDPA) 2010 and maintain all data within Malaysian jurisdiction. Our privacy policies and data handling procedures are regularly audited for compliance.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-category="technical">
+                    <div class="faq-question">
+                        <span>What happens if my automation workflow stops working?</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We provide 24/7 monitoring and automatic error detection. Our system will alert you immediately if any workflow fails, and our support team will work to resolve issues within our SLA timeframes. We also maintain detailed logs for troubleshooting.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-category="general">
+                    <div class="faq-question">
+                        <span>Do you offer training for my team?</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, we provide comprehensive training including video tutorials, live webinars, and on-site training sessions for Premium and Enterprise customers. We also offer certification programs for power users and administrators.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Support Options -->
+    <section class="support-options">
+        <div class="container">
+            <h2 class="section-title">Get Support</h2>
+            <p class="section-subtitle">Choose the support option that works best for you</p>
+            
+            <div class="support-grid">
+                <div class="support-card">
+                    <div class="support-icon">
+                        <i class="fas fa-life-ring"></i>
+                    </div>
+                    <h3>Help Documentation</h3>
+                    <div class="response-time">Self-Service</div>
+                    <p>Browse our comprehensive knowledge base with step-by-step guides, video tutorials, and troubleshooting articles.</p>
+                    <a href="#" class="support-button secondary">
+                        <i class="fas fa-book"></i> Browse Docs
+                    </a>
+                </div>
+
+                <div class="support-card">
+                    <div class="support-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3>Email Support</h3>
+                    <div class="response-time">24-48 Hours</div>
+                    <p>Send us detailed questions about your workflows, technical issues, or account management needs.</p>
+                    <a href="mailto:khuzairisulaiman@gmail.com" class="support-button">
+                        <i class="fas fa-paper-plane"></i> Send Email
+                    </a>
+                </div>
+
+                <div class="support-card priority">
+                    <div class="priority-badge">Most Popular</div>
+                    <div class="support-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h3>Live Chat</h3>
+                    <div class="response-time">2-5 Minutes</div>
+                    <p>Get instant help from our support team during business hours (9 AM - 6 PM MYT, Monday to Friday).</p>
+                    <a href="#" class="support-button" id="startChat">
+                        <i class="fas fa-comment"></i> Start Chat
+                    </a>
+                </div>
+
+                <div class="support-card">
+                    <div class="support-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <h3>Phone Support</h3>
+                    <div class="response-time">Premium & Enterprise</div>
+                    <p>Direct phone line for urgent issues and complex technical support. Available for Premium and Enterprise customers.</p>
+                    <a href="tel:+60115346362" class="support-button">
+                        <i class="fas fa-phone"></i> Call Now
+                    </a>
+                </div>
+
+                <div class="support-card">
+                    <div class="support-icon">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <h3>Screen Sharing</h3>
+                    <div class="response-time">By Appointment</div>
+                    <p>Schedule a one-on-one screen sharing session for workflow setup, troubleshooting, or training.</p>
+                    <a href="#" class="support-button secondary">
+                        <i class="fas fa-calendar"></i> Schedule Session
+                    </a>
+                </div>
+
+                <div class="support-card">
+                    <div class="support-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Community Forum</h3>
+                    <div class="response-time">Community Driven</div>
+                    <p>Join our community of Malaysian business owners sharing automation tips, use cases, and best practices.</p>
+                    <a href="#" class="support-button secondary">
+                        <i class="fas fa-comments"></i> Join Forum
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resources Section -->
+    <section class="resources-section">
+        <div class="container">
+            <h2 class="section-title">Resources & Downloads</h2>
+            <p class="section-subtitle">Helpful resources to maximize your automation success</p>
+            
+            <div class="resources-grid">
+                <div class="resource-card fade-in">
+                    <div class="resource-icon">
+                        <i class="fas fa-play-circle"></i>
+                    </div>
+                    <h3>Video Tutorials</h3>
+                    <p>Step-by-step video guides covering everything from basic setup to advanced workflow configurations.</p>
+                    <div class="resource-meta">
+                        <span>25+ Videos</span>
+                        <span>Free Access</span>
+                    </div>
+                </div>
+
+                <div class="resource-card fade-in">
+                    <div class="resource-icon">
+                        <i class="fas fa-download"></i>
+                    </div>
+                    <h3>Templates & Workflows</h3>
+                    <p>Pre-built automation templates for common Malaysian business processes that you can customize.</p>
+                    <div class="resource-meta">
+                        <span>50+ Templates</span>
+                        <span>Subscriber Only</span>
+                    </div>
+                </div>
+
+                <div class="resource-card fade-in">
+                    <div class="resource-icon">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <h3>ROI Calculator</h3>
+                    <p>Calculate potential time and cost savings from implementing AI automation in your business.</p>
+                    <div class="resource-meta">
+                        <span>Interactive Tool</span>
+                        <span>Free Access</span>
+                    </div>
+                </div>
+
+                <div class="resource-card fade-in">
+                    <div class="resource-icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <h3>Setup Checklists</h3>
+                    <p>Comprehensive checklists for onboarding, integration setup, and workflow optimization.</p>
+                    <div class="resource-meta">
+                        <span>PDF Downloads</span>
+                        <span>Free Access</span>
+                    </div>
+                </div>
+
+                <div class="resource-card fade-in">
+                    <div class="resource-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Webinar Series</h3>
+                    <p>Monthly webinars covering automation trends, case studies, and advanced techniques.</p>
+                    <div class="resource-meta">
+                        <span>Live & Recorded</span>
+                        <span>Free Registration</span>
+                    </div>
+                </div>
+
+                <div class="resource-card fade-in">
+                    <div class="resource-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>API Documentation</h3>
+                    <p>Complete technical documentation for developers integrating with AIFlow's API endpoints.</p>
+                    <div class="resource-meta">
+                        <span>Developer Docs</span>
+                        <span>Enterprise Only</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- System Status -->
+    <section class="status-section">
+        <div class="container">
+            <div class="status-indicator">
+                <div class="status-dot"></div>
+                <span class="status-text">All Systems Operational</span>
+            </div>
+            
+            <div class="system-status">
+                <div class="system-item">
+                    <span class="system-name">API Services</span>
+                    <span class="system-status-badge">Operational</span>
+                </div>
+                <div class="system-item">
+                    <span class="system-name">Workflow Engine</span>
+                    <span class="system-status-badge">Operational</span>
+                </div>
+                <div class="system-item">
+                    <span class="system-name">WhatsApp Integration</span>
+                    <span class="system-status-badge">Operational</span>
+                </div>
+                <div class="system-item">
+                    <span class="system-name">Email Services</span>
+                    <span class="system-status-badge">Operational</span>
+                </div>
+                <div class="system-item">
+                    <span class="system-name">Dashboard</span>
+                    <span class="system-status-badge">Operational</span>
+                </div>
+                <div class="system-item">
+                    <span class="system-name">Database</span>
+                    <span class="system-status-badge">Operational</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div style="display: flex; align-items: center; margin-bottom: 1rem;">
+                        <div class="logo-icon" style="margin-right: 0.75rem;"></div>
+                        <h3>AIFlow Solution</h3>
+                    </div>
+                    <p style="color: #94a3b8; line-height: 1.6;">
+                        Malaysia's leading AI automation provider, revolutionizing how businesses 
+                        operate through intelligent workflow solutions.
+                    </p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="accounting_finance_landing.html">Accounting & Finance</a></li>
+                        <li><a href="hr_recruitment_landing.html">HR & Recruitment</a></li>
+                        <li><a href="logistics_supply_chain_landing.html">Logistics & Supply Chain</a></li>
+                        <li><a href="customer_service_sales_landing.html">Customer Service</a></li>
+                        <li><a href="manufacturing_operations_landing.html">Manufacturing</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="index.html#about">About Us</a></li>
+                        <li><a href="index.html#pricing">Pricing</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                        <li><a href="#">Case Studies</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#">Documentation</a></li>
+                        <li><a href="#">API Reference</a></li>
+                        <li><a href="help-center.html">Help Center</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 AIFlow Solution Sdn. Bhd. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // FAQ functionality
+        const faqItems = document.querySelectorAll('.faq-item');
+        const faqCategories = document.querySelectorAll('.faq-category');
+
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            question.addEventListener('click', () => {
+                // Close other open items
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item) {
+                        otherItem.classList.remove('active');
+                    }
+                });
+                // Toggle current item
+                item.classList.toggle('active');
+            });
+        });
+
+        // FAQ category filtering
+        faqCategories.forEach(category => {
+            category.addEventListener('click', () => {
+                // Remove active from all categories
+                faqCategories.forEach(cat => cat.classList.remove('active'));
+                // Add active to clicked category
+                category.classList.add('active');
+
+                const selectedCategory = category.getAttribute('data-category');
+                
+                // Show/hide FAQ items based on category
+                faqItems.forEach(item => {
+                    const itemCategory = item.getAttribute('data-category');
+                    if (selectedCategory === 'general' || itemCategory === selectedCategory) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                    // Close all items when filtering
+                    item.classList.remove('active');
+                });
+            });
+        });
+
+        // Search functionality
+        const helpSearch = document.getElementById('helpSearch');
+        helpSearch.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            
+            // Search in FAQ items
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question span').textContent.toLowerCase();
+                const answer = item.querySelector('.faq-answer p').textContent.toLowerCase();
+                
+                if (question.includes(searchTerm) || answer.includes(searchTerm) || searchTerm === '') {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+
+            // Search in help cards
+            const helpCards = document.querySelectorAll('.help-card');
+            helpCards.forEach(card => {
+                const title = card.querySelector('h3').textContent.toLowerCase();
+                const content = card.querySelector('p').textContent.toLowerCase();
+                
+                if (title.includes(searchTerm) || content.includes(searchTerm) || searchTerm === '') {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+
+        // Live chat simulation
+        document.getElementById('startChat').addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Simulate opening live chat
+            this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Connecting...';
+            this.style.pointerEvents = 'none';
+            
+            setTimeout(() => {
+                alert('Live chat would open here!\n\nConnect with our support team:\n\n📞 Phone: +60 11-5346 3627\n✉️ Email: khuzairisulaiman@gmail.com\n\nBusiness Hours: 9 AM - 6 PM MYT\nMonday to Friday');
+                this.innerHTML = '<i class="fas fa-comment"></i> Start Chat';
+                this.style.pointerEvents = 'auto';
+            }, 2000);
+        });
+
+        // Resource card click handlers
+        document.querySelectorAll('.resource-card').forEach(card => {
+            card.addEventListener('click', () => {
+                const title = card.querySelector('h3').textContent;
+                alert(`Opening resource: "${title}"\n\nIn a real implementation, this would open or download the resource.`);
+            });
+        });
+
+        // Help card click handlers
+        document.querySelectorAll('.help-card').forEach(card => {
+            card.addEventListener('click', (e) => {
+                if (!e.target.classList.contains('help-link')) {
+                    const title = card.querySelector('h3').textContent;
+                    alert(`Opening help section: "${title}"\n\nIn a real implementation, this would navigate to detailed help articles.`);
+                }
+            });
+        });
+
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            alert('Mobile menu - to be implemented');
+        });
+
+        // System status simulation (randomly update status)
+        setInterval(() => {
+            const statusItems = document.querySelectorAll('.system-status-badge');
+            statusItems.forEach((badge, index) => {
+                // 99% chance to stay operational
+                if (Math.random() > 0.99) {
+                    badge.textContent = 'Maintenance';
+                    badge.style.background = 'var(--warning-color)';
+                    document.querySelector('.status-text').textContent = 'Some Services Under Maintenance';
+                    document.querySelector('.status-dot').style.background = 'var(--warning-color)';
+                } else {
+                    badge.textContent = 'Operational';
+                    badge.style.background = 'var(--success-color)';
+                }
+            });
+        }, 30000); // Check every 30 seconds
+    </script>
+</body>
+</html>
+                        

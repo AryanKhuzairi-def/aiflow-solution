@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentation - AIFlow Solution</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary-color: #6366f1;
+            --secondary-color: #8b5cf6;
+            --accent-color: #06b6d4;
+            --dark-bg: #0f172a;
+            --light-bg: #f8fafc;
+            --text-dark: #1e293b;
+            --text-light: #64748b;
+            --white: #ffffff;
+            --gradient: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #06b6d4 100%);
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+        
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(99, 102, 241, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .navbar.scrolled {
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--gradient);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 0.75rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .logo-icon::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 20px;
+            height: 20px;
+            background: white;
+            border-radius: 4px;
+            opacity: 0.9;
+        }
+        
+        .logo-icon::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 12px;
+            height: 12px;
+            background: var(--primary-color);
+            border-radius: 2px;
+            z-index: 1;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+        
+        .nav-links a.active {
+            color: var(--primary-color);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+        
+        .cta-button {
+            background: var(--gradient);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 12px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
+        }
+        
+        /* Hero Section */
+        .hero {
+            min-height: 60vh;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            margin-top: 80px;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="0.5" fill="%236366f1" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            opacity: 0.3;
+        }
+        
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero-content h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            color: white;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+        
+        .hero-content .highlight {
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero-content p {
+            font-size: 1.25rem;
+            color: #cbd5e1;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .search-container {
+            max-width: 500px;
+            margin: 0 auto 2rem;
+            position: relative;
+        }
+        
+        .search-box {
+            width: 100%;
+            padding: 1rem 1rem 1rem 3rem;
+            border: none;
+            border-radius: 15px;
+            font-size: 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .search-box::placeholder {
+            color: #cbd5e1;
+        }
+        
+        .search-box:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            background: rgba(255, 255, 255, 0.15);
+        }
+        
+        .search-icon {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #cbd5e1;
+            font-size: 1.1rem;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        /* Documentation Grid */
+        .docs-section {
+            padding: 5rem 0;
+            background: var(--light-bg);
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+        
+        .section-description {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .docs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+        
+        .doc-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid transparent;
+        }
+        
+        .doc-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+            border-color: var(--primary-color);
+        }
+        
+        .doc-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .doc-card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+        
+        .doc-card p {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        
+        .doc-links {
+            list-style: none;
+        }
+        
+        .doc-links li {
+            margin-bottom: 0.75rem;
+        }
+        
+        .doc-links a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .doc-links a:hover {
+            color: var(--secondary-color);
+            transform: translateX(5px);
+        }
+        
+        .doc-links a::before {
+            content: '→';
+            font-weight: bold;
+        }
+        
+        /* Quick Start Section */
+        .quick-start {
+            padding: 5rem 0;
+            background: white;
+        }
+        
+        .quick-start-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .step-card {
+            text-align: center;
+            padding: 2rem;
+            background: var(--light-bg);
+            border-radius: 20px;
+            position: relative;
+        }
+        
+        .step-number {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 40px;
+            background: var(--gradient);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        
+        .step-card h4 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin: 1.5rem 0 1rem;
+            color: var(--text-dark);
+        }
+        
+        .step-card p {
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+        
+        /* Resources Section */
+        .resources {
+            padding: 5rem 0;
+            background: var(--light-bg);
+        }
+        
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+        
+        .resource-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        
+        .resource-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .resource-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            margin: 0 auto 1rem;
+        }
+        
+        .resource-card h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+        
+        .resource-card p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        
+        .resource-link {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+        
+        .resource-link:hover {
+            color: var(--secondary-color);
+        }
+        
+        /* Footer */
+        .footer {
+            background: var(--dark-bg);
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: white;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-section ul li a {
+            color: #94a3b8;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-section ul li a:hover {
+            color: var(--accent-color);
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid #334155;
+            padding-top: 1rem;
+            text-align: center;
+            color: #94a3b8;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .docs-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .quick-start-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .resources-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            }
+        }
+        
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MNYLCBKK9C"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-MNYLCBKK9C');
+</script>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon"></div>
+                AIFlow Solution
+            </a>
+            
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#services">Services</a></li>
+                <li><a href="index.html#pricing">Pricing</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="#" class="active">Documentation</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+            
+            <a href="index.html#contact" class="cta-button">Get Started</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1>
+                    <span class="highlight">Documentation</span><br>
+                    & Developer Resources
+                </h1>
+                <p>
+                    Everything you need to implement, customize, and optimize your AI automation workflows. 
+                    From quick start guides to advanced API references.
+                </p>
+                
+                <div class="search-container">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" class="search-box" placeholder="Search documentation...">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Documentation Grid -->
+    <section class="docs-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Documentation Categories</h2>
+                <p class="section-description">
+                    Comprehensive guides and references for all aspects of AIFlow automation platform.
+                </p>
+            </div>
+            
+            <div class="docs-grid">
+                <div class="doc-card fade-in">
+                    <div class="doc-icon">
+                        <i class="fas fa-play-circle"></i>
+                    </div>
+                    <h3>Getting Started</h3>
+                    <p>Quick start guides and tutorials to get your first automation workflow running in minutes.</p>
+                    <ul class="doc-links">
+                        <li><a href="#">Quick Start Guide</a></li>
+                        <li><a href="#">First Workflow Tutorial</a></li>
+                        <li><a href="#">Account Setup</a></li>
+                        <li><a href="#">Platform Overview</a></li>
+                    </ul>
+                </div>
+                
+                <div class="doc-card fade-in">
+                    <div class="doc-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>API Reference</h3>
+                    <p>Complete API documentation with endpoints, authentication, and code examples.</p>
+                    <ul class="doc-links">
+                        <li><a href="#">REST API Documentation</a></li>
+                        <li><a href="#">Authentication Guide</a></li>
+                        <li><a href="#">Webhook Integration</a></li>
+                        <li><a href="#">Rate Limits & Best Practices</a></li>
+                    </ul>
+                </div>
+                
+                <div class="doc-card fade-in">
+                    <div class="doc-icon">
+                        <i class="fas fa-puzzle-piece"></i>
+                    </div>
+                    <h3>Workflow Builder</h3>
+                    <p>Learn to create, customize, and optimize automation workflows using our visual builder.</p>
+                    <ul class="doc-links">
+                        <li><a href="#">Workflow Designer Guide</a></li>
+                        <li><a href="#">Node Types & Functions</a></li>
+                        <li><a href="#">Conditional Logic</a></li>
+                        <li><a href="#">Testing & Debugging</a></li>
+                    </ul>
+                </div>
+                
+                <div class="doc-card fade-in">
+                    <div class="doc-icon">
+                        <i class="fas fa-plug"></i>
+                    </div>
+                    <h3>Integrations</h3>
+                    <p>Connect AIFlow with your existing tools and platforms for seamless automation.</p>
+                    <ul class="doc-links">
+                        <li><a href="#">WhatsApp Business API</a></li>
+                        <li><a href="#">Email Providers</a></li>
+                        <li><a href="#">CRM Integrations</a></li>
+                        <li><a href="#">Database Connections</a></li>
+                    </ul>
+                </div>
+                
+                <div class="doc-card fade-in">
+                    <div class="doc-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>AI Features</h3>
+                    <p>Harness the power of AI for document processing, data analysis, and intelligent automation.</p>
+                    <ul class="doc-links">
+                        <li><a href="#">AI Document Processing</a></li>
+                        <li><a href="#">Natural Language Processing</a></li>
+                        <li><a href="#">Predictive Analytics</a></li>
+                        <li><a href="#">Custom AI Models</a></li>
+                    </ul>
+                </div>
+                
+                <div class="doc-card fade-in">
+                    <div class="doc-icon">
+                        <i class="fas fa-industry"></i>
+                    </div>
+                    <h3>Industry Solutions</h3>
+                    <p>Pre-built automation templates and guides for specific industries and use cases.</p>
+                    <ul class="doc-links">
+                        <li><a href="#">Accounting & Finance</a></li>
+                        <li><a href="#">HR & Recruitment</a></li>
+                        <li><a href="#">Logistics & Supply Chain</a></li>
+                        <li><a href="#">Manufacturing & Operations</a></li>
+                    </ul>
+                </div>
+                
+                <div class="doc-card fade-in">
+                    <div class="doc-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Security & Compliance</h3>
+                    <p>Understand security features, compliance standards, and best practices for data protection.</p>
+                    <ul class="doc-links">
+                        <li><a href="#">Security Overview</a></li>
+                        <li><a href="#">Data Privacy & GDPR</a></li>
+                        <li><a href="#">Access Controls</a></li>
+                        <li><a href="#">Audit Logs</a></li>
+                    </ul>
+                </div>
+                
+                <div class="doc-card fade-in">
+                    <div class="doc-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Analytics & Monitoring</h3>
+                    <p>Track performance, monitor workflows, and optimize automation efficiency.</p>
+                    <ul class="doc-links">
+                        <li><a href="#">Performance Metrics</a></li>
+                        <li><a href="#">Workflow Analytics</a></li>
+                        <li><a href="#">Error Monitoring</a></li>
+                        <li><a href="#">Custom Dashboards</a></li>
+                    </ul>
+                </div>
+                
+                <div class="doc-card fade-in">
+                    <div class="doc-icon">
+                        <i class="fas fa-life-ring"></i>
+                    </div>
+                    <h3>Support & Troubleshooting</h3>
+                    <p>Find solutions to common issues and learn how to get help when you need it.</p>
+                    <ul class="doc-links">
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Common Issues</a></li>
+                        <li><a href="#">Contact Support</a></li>
+                        <li><a href="#">Community Forum</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Start Guide -->
+    <section class="quick-start">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Get Started in 3 Simple Steps</h2>
+                <p class="section-description">
+                    Follow this guide to create your first automation workflow in under 10 minutes.
+                </p>
+            </div>
+            
+            <div class="quick-start-grid">
+                <div class="step-card fade-in">
+                    <div class="step-number">1</div>
+                    <h4>Create Your Account</h4>
+                    <p>Sign up for AIFlow Solution and complete the onboarding process. Choose your plan and configure your workspace settings.</p>
+                </div>
+                
+                <div class="step-card fade-in">
+                    <div class="step-number">2</div>
+                    <h4>Connect Your Tools</h4>
+                    <p>Link your existing business tools like email, CRM, or messaging platforms through our secure integration wizard.</p>
+                </div>
+                
+                <div class="step-card fade-in">
+                    <div class="step-number">3</div>
+                    <h4>Build Your Workflow</h4>
+                    <p>Use our visual workflow builder to create your first automation. Start with a template or build from scratch.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Developer Resources -->
+    <section class="resources">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Developer Resources</h2>
+                <p class="section-description">
+                    Tools, SDKs, and resources for developers building on the AIFlow platform.
+                </p>
+            </div>
+            
+            <div class="resources-grid">
+                <div class="resource-card fade-in">
+                    <div class="resource-icon">
+                        <i class="fab fa-github"></i>
+                    </div>
+                    <h4>GitHub Repository</h4>
+                    <p>Access sample code, SDKs, and community contributions.</p>
+                    <a href="#" class="resource-link">View on GitHub →</a>
+                </div>
+                
+                <div class="resource-card fade-in">
+                    <div class="resource-icon">
+                        <i class="fas fa-download"></i>
+                    </div>
+                    <h4>SDK Downloads</h4>
+                    <p>Official SDKs for Python, Node.js, PHP, and other languages.</p>
+                    <a href="#" class="resource-link">Download SDKs →</a>
+                </div>
+                
+                <div class="resource-card fade-in">
+                    <div class="resource-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h4>Code Examples</h4>
+                    <p>Ready-to-use code snippets and implementation examples.</p>
+                    <a href="#" class="resource-link">Browse Examples →</a>
+                </div>
+                
+                <div class="resource-card fade-in">
+                    <div class="resource-icon">
+                        <i class="fas fa-flask"></i>
+                    </div>
+                    <h4>API Testing</h4>
+                    <p>Interactive API explorer and testing environment.</p>
+                    <a href="#" class="resource-link">Try API →</a>
+                </div>
+                
+                <div class="resource-card fade-in">
+                    <div class="resource-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h4>Developer Community</h4>
+                    <p>Join discussions, share ideas, and get help from other developers.</p>
+                    <a href="#" class="resource-link">Join Community →</a>
+                </div>
+                
+                <div class="resource-card fade-in">
+                    <div class="resource-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h4>Video Tutorials</h4>
+                    <p>Step-by-step video guides for common development tasks.</p>
+                    <a href="#" class="resource-link">Watch Tutorials →</a>
+                </div>
+                
+                <div class="resource-card fade-in">
+                    <div class="resource-icon">
+                        <i class="fas fa-newspaper"></i>
+                    </div>
+                    <h4>Changelog</h4>
+                    <p>Stay updated with the latest features and API changes.</p>
+                    <a href="#" class="resource-link">View Updates →</a>
+                </div>
+                
+                <div class="resource-card fade-in">
+                    <div class="resource-icon">
+                        <i class="fas fa-bug"></i>
+                    </div>
+                    <h4>Bug Reports</h4>
+                    <p>Report issues and track the status of bug fixes.</p>
+                    <a href="#" class="resource-link">Report Bug →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div style="display: flex; align-items: center; margin-bottom: 1rem;">
+                        <div class="logo-icon" style="margin-right: 0.75rem;"></div>
+                        <h3>AIFlow Solution</h3>
+                    </div>
+                    <p style="color: #94a3b8; line-height: 1.6;">
+                        Malaysia's leading AI automation provider, revolutionizing how businesses 
+                        operate through intelligent workflow solutions.
+                    </p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Documentation</h3>
+                    <ul>
+                        <li><a href="#">Getting Started</a></li>
+                        <li><a href="#">API Reference</a></li>
+                        <li><a href="#">Workflow Builder</a></li>
+                        <li><a href="#">Integrations Guide</a></li>
+                        <li><a href="#">AI Features</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Developer Tools</h3>
+                    <ul>
+                        <li><a href="#">GitHub Repository</a></li>
+                        <li><a href="#">SDK Downloads</a></li>
+                        <li><a href="#">API Testing</a></li>
+                        <li><a href="#">Code Examples</a></li>
+                        <li><a href="#">Developer Community</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="aiflow_help_center.html">Help Center</a></li>
+                        <li><a href="index.html#contact">Contact Support</a></li>
+                        <li><a href="terms_of_service_page.html">Service Level Agreement</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 AIFlow Solution Sdn. Bhd. All rights reserved. | <a href="#" style="color: #94a3b8;">Privacy Policy</a> | <a href="#" style="color: #94a3b8;">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Search functionality (basic implementation)
+        const searchBox = document.querySelector('.search-box');
+        const docCards = document.querySelectorAll('.doc-card');
+        
+        searchBox.addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            
+            docCards.forEach(card => {
+                const cardText = card.textContent.toLowerCase();
+                const cardTitle = card.querySelector('h3').textContent.toLowerCase();
+                
+                if (cardText.includes(searchTerm) || cardTitle.includes(searchTerm)) {
+                    card.style.display = 'block';
+                    card.style.opacity = '1';
+                } else if (searchTerm === '') {
+                    card.style.display = 'block';
+                    card.style.opacity = '1';
+                } else {
+                    card.style.opacity = '0.3';
+                }
+            });
+        });
+
+        // Add search suggestions (placeholder functionality)
+        searchBox.addEventListener('focus', function() {
+            // Future: Show popular search terms or suggestions
+        });
+
+        // Add keyboard navigation for search
+        searchBox.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                searchBox.blur();
+                searchBox.value = '';
+                // Reset all cards
+                docCards.forEach(card => {
+                    card.style.display = 'block';
+                    card.style.opacity = '1';
+                });
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service - AIFlow Solution</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary-color: #6366f1;
+            --secondary-color: #8b5cf6;
+            --accent-color: #06b6d4;
+            --dark-bg: #0f172a;
+            --light-bg: #f8fafc;
+            --text-dark: #1e293b;
+            --text-light: #64748b;
+            --white: #ffffff;
+            --gradient: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #06b6d4 100%);
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+        }
+        
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(99, 102, 241, 0.1);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--gradient);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 0.75rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .logo-icon::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 20px;
+            height: 20px;
+            background: white;
+            border-radius: 4px;
+            opacity: 0.9;
+        }
+        
+        .logo-icon::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 12px;
+            height: 12px;
+            background: var(--primary-color);
+            border-radius: 2px;
+            z-index: 1;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .back-button {
+            background: var(--gradient);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 12px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .back-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
+        }
+        
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+        
+        .mobile-menu span {
+            width: 25px;
+            height: 3px;
+            background: var(--primary-color);
+            margin: 3px 0;
+            transition: 0.3s;
+            border-radius: 2px;
+        }
+        
+        /* Main Content */
+        .main-content {
+            padding-top: 100px;
+            min-height: 100vh;
+            background: var(--light-bg);
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .page-header {
+            text-align: center;
+            padding: 3rem 0;
+            background: white;
+            margin: -20px -2rem 3rem;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .page-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+        
+        .page-subtitle {
+            color: var(--text-light);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .last-updated {
+            background: rgba(99, 102, 241, 0.1);
+            color: var(--primary-color);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            display: inline-block;
+            margin-top: 1rem;
+        }
+        
+        .terms-content {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            margin-bottom: 3rem;
+        }
+        
+        .terms-content h2 {
+            color: var(--text-dark);
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--primary-color);
+            position: relative;
+        }
+        
+        .terms-content h2::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--accent-color);
+        }
+        
+        .terms-content h3 {
+            color: var(--text-dark);
+            font-size: 1.2rem;
+            margin: 2rem 0 1rem;
+            font-weight: 600;
+        }
+        
+        .terms-content p {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+        
+        .terms-content ul {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
+        }
+        
+        .terms-content li {
+            margin-bottom: 0.75rem;
+            line-height: 1.6;
+        }
+        
+        .terms-content ol {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
+        }
+        
+        .terms-content ol li {
+            margin-bottom: 0.75rem;
+            line-height: 1.6;
+        }
+        
+        .terms-content strong {
+            color: var(--text-dark);
+        }
+        
+        .highlight-box {
+            background: rgba(99, 102, 241, 0.1);
+            border-left: 4px solid var(--primary-color);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0 10px 10px 0;
+        }
+        
+        .highlight-box h4 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        
+        .highlight-box p {
+            margin-bottom: 0;
+        }
+        
+        .contact-info {
+            background: var(--gradient);
+            color: white;
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .contact-info h3 {
+            margin-bottom: 1rem;
+        }
+        
+        .contact-info p {
+            opacity: 0.9;
+            margin-bottom: 1rem;
+        }
+        
+        .contact-info a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            opacity: 0.9;
+            transition: opacity 0.3s ease;
+        }
+        
+        .contact-info a:hover {
+            opacity: 1;
+        }
+        
+        /* Footer */
+        .footer {
+            background: var(--dark-bg);
+            color: white;
+            padding: 3rem 0 1rem;
+            text-align: center;
+        }
+        
+        .footer p {
+            color: #94a3b8;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu {
+                display: flex;
+            }
+            
+            .page-title {
+                font-size: 2rem;
+            }
+            
+            .terms-content {
+                padding: 2rem;
+                margin: 0 -1rem 3rem;
+            }
+            
+            .page-header {
+                margin: -20px -1rem 3rem;
+                padding: 2rem 1rem;
+            }
+            
+            .container {
+                padding: 0 1rem;
+            }
+        }
+        
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Back to top button */
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--gradient);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+            transition: all 0.3s ease;
+            z-index: 999;
+        }
+        
+        .back-to-top:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
+        }
+        
+        .back-to-top.visible {
+            display: flex;
+        }
+    </style>
+</head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MNYLCBKK9C"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-MNYLCBKK9C');
+</script>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon"></div>
+                AIFlow Solution
+            </a>
+            
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#services">Services</a></li>
+                <li><a href="index.html#pricing">Pricing</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+            
+            <a href="index.html" class="back-button">
+                <i class="fas fa-arrow-left"></i>
+                Back to Home
+            </a>
+            
+            <div class="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Page Header -->
+            <div class="page-header">
+                <h1 class="page-title">Terms of Service</h1>
+                <p class="page-subtitle">
+                    These terms govern your use of AIFlow Solution's AI automation services. 
+                    Please read them carefully before using our platform.
+                </p>
+                <div class="last-updated">
+                    Last updated: January 2025
+                </div>
+            </div>
+
+            <!-- Terms of Service Content -->
+            <div class="terms-content">
+                <div class="highlight-box">
+                    <h4>Important Notice</h4>
+                    <p>By accessing or using AIFlow Solution's services, you agree to be bound by these Terms of Service. If you do not agree to these terms, please do not use our services.</p>
+                </div>
+
+                <h2>1. Acceptance of Terms</h2>
+                <p>
+                    These Terms of Service ("Terms") constitute a legally binding agreement between you ("Customer", "You", or "Your") 
+                    and AIFlow Solution Sdn. Bhd. ("AIFlow", "We", "Us", or "Our") regarding your use of our AI automation services, 
+                    platforms, and related software (collectively, the "Services").
+                </p>
+                <p>
+                    By accessing or using our Services, you acknowledge that you have read, understood, and agree to be bound by these Terms. 
+                    If you are entering into these Terms on behalf of a company or other legal entity, you represent that you have the 
+                    authority to bind such entity to these Terms.
+                </p>
+
+                <h2>2. Description of Services</h2>
+                <p>
+                    AIFlow Solution provides AI-powered automation services designed to streamline business operations through:
+                </p>
+                <ul>
+                    <li><strong>Workflow Automation:</strong> Custom n8n-based automation solutions</li>
+                    <li><strong>AI Integration:</strong> Artificial intelligence tools for data processing and decision-making</li>
+                    <li><strong>Business Process Optimization:</strong> Industry-specific automation bundles</li>
+                    <li><strong>Platform Integration:</strong> Connecting various business applications and systems</li>
+                    <li><strong>Consultation Services:</strong> Strategic guidance on automation implementation</li>
+                </ul>
+
+                <h2>3. Subscription Plans and Pricing</h2>
+                
+                <h3>3.1 Subscription Tiers</h3>
+                <p>We offer multiple subscription plans:</p>
+                <ul>
+                    <li><strong>Basic Plan:</strong> RM500/month - 3 automation workflows</li>
+                    <li><strong>Standard Plan:</strong> RM1,000/month - 8 automation workflows</li>
+                    <li><strong>Premium Plan:</strong> RM2,000/month - 15 automation workflows</li>
+                    <li><strong>Enterprise Plan:</strong> Custom pricing - Unlimited workflows</li>
+                </ul>
+                
+                <h3>3.2 Billing and Payment</h3>
+                <ul>
+                    <li>Subscriptions are billed monthly in advance</li>
+                    <li>All prices are in Malaysian Ringgit (RM) and exclude applicable taxes</li>
+                    <li>Payment is due within 30 days of invoice date</li>
+                    <li>We accept bank transfers, credit cards, and other approved payment methods</li>
+                    <li>Late payments may result in service suspension</li>
+                </ul>
+                
+                <h3>3.3 Price Changes</h3>
+                <p>
+                    We reserve the right to modify our pricing with 30 days' written notice. 
+                    Price changes will apply to your next billing cycle after the notice period.
+                </p>
+
+                <h2>4. User Responsibilities</h2>
+                
+                <h3>4.1 Account Security</h3>
+                <p>You are responsible for:</p>
+                <ul>
+                    <li>Maintaining the confidentiality of your account credentials</li>
+                    <li>All activities that occur under your account</li>
+                    <li>Immediately notifying us of any unauthorized access</li>
+                    <li>Using strong passwords and enabling two-factor authentication where available</li>
+                </ul>
+                
+                <h3>4.2 Acceptable Use</h3>
+                <p>You agree to use our Services only for lawful purposes and in accordance with these Terms. You will not:</p>
+                <ul>
+                    <li>Violate any applicable laws or regulations</li>
+                    <li>Infringe upon intellectual property rights</li>
+                    <li>Transmit malicious code or attempt to harm our systems</li>
+                    <li>Use the Services to spam or send unsolicited communications</li>
+                    <li>Attempt to reverse engineer or compromise our platform security</li>
+                    <li>Share your account credentials with unauthorized parties</li>
+                </ul>
+                
+                <h3>4.3 Data Accuracy</h3>
+                <p>
+                    You are responsible for the accuracy and quality of data you provide to our Services. 
+                    We are not liable for automation results based on inaccurate or incomplete data.
+                </p>
+
+                <h2>5. Intellectual Property Rights</h2>
+                
+                <h3>5.1 AIFlow's Intellectual Property</h3>
+                <p>
+                    All rights, title, and interest in and to the Services, including all software, algorithms, 
+                    documentation, and proprietary technologies, remain the exclusive property of AIFlow Solution. 
+                    You receive only a limited, non-exclusive license to use the Services as described in these Terms.
+                </p>
+                
+                <h3>5.2 Your Content</h3>
+                <p>
+                    You retain ownership of all data, content, and information you provide to our Services ("Your Content"). 
+                    By using our Services, you grant us a limited license to process Your Content solely to provide the Services.
+                </p>
+                
+                <h3>5.3 Feedback</h3>
+                <p>
+                    Any feedback, suggestions, or improvements you provide regarding our Services may be used by us 
+                    without restriction or compensation.
+                </p>
+
+                <h2>6. Privacy and Data Protection</h2>
+                <p>
+                    Our collection, use, and protection of your personal information is governed by our 
+                    <a href="privacy-policy.html" style="color: var(--primary-color); text-decoration: none; font-weight: 600;">Privacy Policy</a>, 
+                    which is incorporated into these Terms by reference. We comply with the Malaysian Personal Data Protection Act 2010 (PDPA) 
+                    and international data protection standards.
+                </p>
+
+                <h2>7. Service Level Agreement (SLA)</h2>
+                
+                <h3>7.1 Uptime Guarantee</h3>
+                <p>We strive to maintain 99.5% uptime for our Services, calculated monthly. Scheduled maintenance is excluded from this calculation.</p>
+                
+                <h3>7.2 Support Response Times</h3>
+                <ul>
+                    <li><strong>Basic Plan:</strong> Standard support - 48-hour response time</li>
+                    <li><strong>Standard Plan:</strong> Priority support - 24-hour response time</li>
+                    <li><strong>Premium Plan:</strong> Dedicated support - 12-hour response time</li>
+                    <li><strong>Enterprise Plan:</strong> 24/7 dedicated support - 4-hour response time</li>
+                </ul>
+                
+                <h3>7.3 Service Credits</h3>
+                <p>
+                    If we fail to meet our uptime guarantee, you may be eligible for service credits as outlined in your specific service agreement.
+                </p>
+
+                <h2>8. Limitation of Liability</h2>
+                <p>
+                    To the maximum extent permitted by Malaysian law:
+                </p>
+                <ol>
+                    <li>AIFlow Solution shall not be liable for any indirect, incidental, special, consequential, or punitive damages</li>
+                    <li>Our total liability for any claims related to the Services shall not exceed the amount you paid us in the 12 months preceding the claim</li>
+                    <li>We are not responsible for damages caused by your misuse of the Services or failure to follow our guidelines</li>
+                    <li>We do not guarantee specific business outcomes or cost savings from using our automation services</li>
+                </ol>
+
+                <h2>9. Indemnification</h2>
+                <p>
+                    You agree to indemnify, defend, and hold harmless AIFlow Solution, its officers, directors, employees, and agents from any claims, 
+                    damages, losses, or expenses (including reasonable attorneys' fees) arising from:
+                </p>
+                <ul>
+                    <li>Your use of the Services in violation of these Terms</li>
+                    <li>Your violation of applicable laws or third-party rights</li>
+                    <li>Your Content or data provided to our Services</li>
+                    <li>Your negligence or willful misconduct</li>
+                </ul>
+
+                <h2>10. Termination</h2>
+                
+                <h3>10.1 Termination by You</h3>
+                <p>
+                    You may terminate your subscription at any time with 30 days' written notice. 
+                    You remain responsible for all charges incurred up to the termination date.
+                </p>
+                
+                <h3>10.2 Termination by Us</h3>
+                <p>We may terminate or suspend your access to the Services:</p>
+                <ul>
+                    <li>Immediately for breach of these Terms</li>
+                    <li>With 30 days' notice for non-payment</li>
+                    <li>With 30 days' notice for business reasons</li>
+                    <li>Immediately for illegal activities or security threats</li>
+                </ul>
+                
+                <h3>10.3 Effect of Termination</h3>
+                <p>
+                    Upon termination, your access to the Services will cease, and we will provide a reasonable period 
+                    for you to retrieve your data. We are not responsible for data retrieval after the specified period.
+                </p>
+
+                <h2>11. Force Majeure</h2>
+                <p>
+                    Neither party shall be liable for any failure or delay in performance due to circumstances beyond their reasonable control, 
+                    including but not limited to acts of God, natural disasters, war, terrorism, government actions, 
+                    internet service provider failures, or other unforeseeable events.
+                </p>
+
+                <h2>12. Governing Law and Jurisdiction</h2>
+                <p>
+                    These Terms shall be governed by and construed in accordance with the laws of Malaysia. 
+                    Any disputes arising under these Terms shall be subject to the exclusive jurisdiction of the courts of Malaysia, 
+                    specifically the courts of Kuala Lumpur.
+                </p>
+
+                <h2>13. Dispute Resolution</h2>
+                
+                <h3>13.1 Negotiation</h3>
+                <p>
+                    Before initiating formal proceedings, parties agree to attempt good faith negotiations to resolve any disputes.
+                </p>
+                
+                <h3>13.2 Mediation</h3>
+                <p>
+                    If negotiation fails, disputes shall be submitted to mediation under the rules of the Malaysian Mediation Centre.
+                </p>
+                
+                <h3>13.3 Arbitration</h3>
+                <p>
+                    If mediation is unsuccessful, disputes shall be resolved through binding arbitration under the 
+                    Arbitration Act 2005 of Malaysia.
+                </p>
+
+                <h2>14. Modifications to Terms</h2>
+                <p>
+                    We reserve the right to modify these Terms at any time. We will provide notice of material changes by:
+                </p>
+                <ul>
+                    <li>Posting updated Terms on our website</li>
+                    <li>Sending email notifications to registered users</li>
+                    <li>Providing in-app notifications through our platform</li>
+                </ul>
+                <p>
+                    Your continued use of the Services after the effective date of changes constitutes acceptance of the modified Terms.
+                </p>
+
+                <h2>15. Entire Agreement</h2>
+                <p>
+                    These Terms, together with our Privacy Policy and any specific service agreements, constitute the entire agreement 
+                    between you and AIFlow Solution regarding the use of our Services. These Terms supersede all prior or 
+                    contemporaneous communications and proposals between the parties.
+                </p>
+
+                <h2>16. Severability</h2>
+                <p>
+                    If any provision of these Terms is found to be unenforceable or invalid, the remaining provisions will continue 
+                    in full force and effect. The invalid provision will be replaced with a valid provision that most closely 
+                    matches the intent of the original provision.
+                </p>
+
+                <h2>17. Waiver</h2>
+                <p>
+                    The failure of either party to enforce any right or provision in these Terms shall not constitute a waiver 
+                    of such right or provision unless acknowledged and agreed to by that party in writing.
+                </p>
+
+                <h2>18. Assignment</h2>
+                <p>
+                    You may not assign or transfer these Terms or your rights hereunder without our prior written consent. 
+                    We may assign these Terms in connection with a merger, acquisition, or sale of all or substantially all of our assets.
+                </p>
+
+                <h2>19. Contact Information</h2>
+                <p>
+                    For questions about these Terms of Service, please contact our legal department:
+                </p>
+                <ul>
+                    <li><strong>Email:</strong> legal@aiflowsolution.com</li>
+                    <li><strong>Phone:</strong> +60 11-5346 3627</li>
+                    <li><strong>Address:</strong> AIFlow Solution Sdn. Bhd., Kuala Lumpur, Malaysia</li>
+                </ul>
+            </div>
+
+            <!-- Contact Information -->
+            <div class="contact-info">
+                <h3>Need Help Understanding These Terms?</h3>
+                <p>
+                    Our team is here to help clarify any questions you may have about our Terms of Service. 
+                    Don't hesitate to reach out.
+                </p>
+                <p>
+                    <strong>Email:</strong> <a href="mailto:legal@aiflowsolution.com">legal@aiflowsolution.com</a><br>
+                    <strong>Phone:</strong> <a href="tel:+60115346367">+60 11-5346 3627</a><br>
+                    <strong>Business Hours:</strong> Monday - Friday, 9:00 AM - 6:00 PM (MYT)
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 AIFlow Solution Sdn. Bhd. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" onclick="scrollToTop()">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Back to top functionality
+        window.addEventListener('scroll', () => {
+            const backToTop = document.querySelector('.back-to-top');
+            if (window.scrollY > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Mobile menu toggle (placeholder)
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            alert('Mobile menu - to be implemented');
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

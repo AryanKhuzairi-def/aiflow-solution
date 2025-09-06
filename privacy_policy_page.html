@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - AIFlow Solution</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary-color: #6366f1;
+            --secondary-color: #8b5cf6;
+            --accent-color: #06b6d4;
+            --dark-bg: #0f172a;
+            --light-bg: #f8fafc;
+            --text-dark: #1e293b;
+            --text-light: #64748b;
+            --white: #ffffff;
+            --gradient: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #06b6d4 100%);
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+        }
+        
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(99, 102, 241, 0.1);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--gradient);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 0.75rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .logo-icon::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 20px;
+            height: 20px;
+            background: white;
+            border-radius: 4px;
+            opacity: 0.9;
+        }
+        
+        .logo-icon::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 12px;
+            height: 12px;
+            background: var(--primary-color);
+            border-radius: 2px;
+            z-index: 1;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .back-button {
+            background: var(--gradient);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 12px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .back-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
+        }
+        
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+        
+        .mobile-menu span {
+            width: 25px;
+            height: 3px;
+            background: var(--primary-color);
+            margin: 3px 0;
+            transition: 0.3s;
+            border-radius: 2px;
+        }
+        
+        /* Main Content */
+        .main-content {
+            padding-top: 100px;
+            min-height: 100vh;
+            background: var(--light-bg);
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .page-header {
+            text-align: center;
+            padding: 3rem 0;
+            background: white;
+            margin: -20px -2rem 3rem;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .page-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+        
+        .page-subtitle {
+            color: var(--text-light);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .last-updated {
+            background: rgba(99, 102, 241, 0.1);
+            color: var(--primary-color);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            display: inline-block;
+            margin-top: 1rem;
+        }
+        
+        .privacy-content {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            margin-bottom: 3rem;
+        }
+        
+        .privacy-content h2 {
+            color: var(--text-dark);
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--primary-color);
+            position: relative;
+        }
+        
+        .privacy-content h2::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--accent-color);
+        }
+        
+        .privacy-content h3 {
+            color: var(--text-dark);
+            font-size: 1.2rem;
+            margin: 2rem 0 1rem;
+            font-weight: 600;
+        }
+        
+        .privacy-content p {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+        
+        .privacy-content ul {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
+        }
+        
+        .privacy-content li {
+            margin-bottom: 0.75rem;
+            line-height: 1.6;
+        }
+        
+        .privacy-content strong {
+            color: var(--text-dark);
+        }
+        
+        .contact-info {
+            background: var(--gradient);
+            color: white;
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .contact-info h3 {
+            margin-bottom: 1rem;
+        }
+        
+        .contact-info p {
+            opacity: 0.9;
+            margin-bottom: 1rem;
+        }
+        
+        .contact-info a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            opacity: 0.9;
+            transition: opacity 0.3s ease;
+        }
+        
+        .contact-info a:hover {
+            opacity: 1;
+        }
+        
+        /* Footer */
+        .footer {
+            background: var(--dark-bg);
+            color: white;
+            padding: 3rem 0 1rem;
+            text-align: center;
+        }
+        
+        .footer p {
+            color: #94a3b8;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu {
+                display: flex;
+            }
+            
+            .page-title {
+                font-size: 2rem;
+            }
+            
+            .privacy-content {
+                padding: 2rem;
+                margin: 0 -1rem 3rem;
+            }
+            
+            .page-header {
+                margin: -20px -1rem 3rem;
+                padding: 2rem 1rem;
+            }
+            
+            .container {
+                padding: 0 1rem;
+            }
+        }
+        
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Back to top button */
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--gradient);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+            transition: all 0.3s ease;
+            z-index: 999;
+        }
+        
+        .back-to-top:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
+        }
+        
+        .back-to-top.visible {
+            display: flex;
+        }
+    </style>
+</head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MNYLCBKK9C"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-MNYLCBKK9C');
+</script>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon"></div>
+                AIFlow Solution
+            </a>
+            
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#services">Services</a></li>
+                <li><a href="index.html#pricing">Pricing</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+            
+            <a href="index.html" class="back-button">
+                <i class="fas fa-arrow-left"></i>
+                Back to Home
+            </a>
+            
+            <div class="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Page Header -->
+            <div class="page-header">
+                <h1 class="page-title">Privacy Policy</h1>
+                <p class="page-subtitle">
+                    Learn how AIFlow Solution collects, uses, and protects your personal information 
+                    when you use our AI automation services.
+                </p>
+                <div class="last-updated">
+                    Last updated: January 2025
+                </div>
+            </div>
+
+            <!-- Privacy Policy Content -->
+            <div class="privacy-content">
+                <h2>1. Information We Collect</h2>
+                <p>
+                    At AIFlow Solution, we collect information to provide you with the best AI automation services. 
+                    The types of information we collect include:
+                </p>
+                
+                <h3>Personal Information</h3>
+                <ul>
+                    <li>Name and contact details (email, phone number, address)</li>
+                    <li>Company information and business details</li>
+                    <li>Payment and billing information</li>
+                    <li>Communication preferences and service requirements</li>
+                </ul>
+                
+                <h3>Technical Information</h3>
+                <ul>
+                    <li>Usage data from our automation platforms</li>
+                    <li>Device information and browser details</li>
+                    <li>IP addresses and location data</li>
+                    <li>Cookies and similar tracking technologies</li>
+                </ul>
+
+                <h2>2. How We Use Your Information</h2>
+                <p>
+                    We use the information we collect for the following purposes:
+                </p>
+                <ul>
+                    <li><strong>Service Delivery:</strong> To provide, maintain, and improve our AI automation services</li>
+                    <li><strong>Customer Support:</strong> To respond to your inquiries and provide technical assistance</li>
+                    <li><strong>Billing and Payments:</strong> To process payments and manage your subscription</li>
+                    <li><strong>Communication:</strong> To send service updates, newsletters, and marketing communications (with your consent)</li>
+                    <li><strong>Analytics:</strong> To analyze usage patterns and improve our services</li>
+                    <li><strong>Compliance:</strong> To comply with legal obligations and protect our rights</li>
+                </ul>
+
+                <h2>3. Information Sharing and Disclosure</h2>
+                <p>
+                    We respect your privacy and do not sell your personal information. We may share your information in the following circumstances:
+                </p>
+                
+                <h3>Service Providers</h3>
+                <p>
+                    We may share information with trusted third-party service providers who assist us in delivering our services, 
+                    including cloud hosting, payment processing, and customer support platforms.
+                </p>
+                
+                <h3>Legal Compliance</h3>
+                <p>
+                    We may disclose information if required by law, court order, or to protect the rights, property, 
+                    or safety of AIFlow Solution, our users, or others.
+                </p>
+                
+                <h3>Business Transfers</h3>
+                <p>
+                    In the event of a merger, acquisition, or sale of assets, your information may be transferred 
+                    to the acquiring entity with appropriate safeguards in place.
+                </p>
+
+                <h2>4. Data Security</h2>
+                <p>
+                    We implement robust security measures to protect your information:
+                </p>
+                <ul>
+                    <li>Industry-standard encryption for data transmission and storage</li>
+                    <li>Regular security assessments and updates</li>
+                    <li>Limited access to personal information on a need-to-know basis</li>
+                    <li>Secure data centers with physical and digital safeguards</li>
+                    <li>Employee training on data protection and privacy practices</li>
+                </ul>
+
+                <h2>5. Data Retention</h2>
+                <p>
+                    We retain your personal information for as long as necessary to provide our services and comply with legal obligations. 
+                    Specifically:
+                </p>
+                <ul>
+                    <li>Account information: Retained while your account is active and for 7 years after closure</li>
+                    <li>Transaction records: Retained for 7 years for audit and compliance purposes</li>
+                    <li>Usage data: Typically retained for 2 years for service improvement</li>
+                    <li>Marketing communications: Until you opt out or as required by law</li>
+                </ul>
+
+                <h2>6. Your Rights</h2>
+                <p>
+                    Under Malaysian data protection laws and international standards, you have the following rights:
+                </p>
+                <ul>
+                    <li><strong>Access:</strong> Request a copy of the personal information we hold about you</li>
+                    <li><strong>Correction:</strong> Request correction of inaccurate or incomplete information</li>
+                    <li><strong>Deletion:</strong> Request deletion of your personal information (subject to legal requirements)</li>
+                    <li><strong>Portability:</strong> Request a copy of your data in a structured, machine-readable format</li>
+                    <li><strong>Objection:</strong> Object to processing of your personal information for marketing purposes</li>
+                    <li><strong>Restriction:</strong> Request restriction of processing in certain circumstances</li>
+                </ul>
+
+                <h2>7. Cookies and Tracking Technologies</h2>
+                <p>
+                    We use cookies and similar technologies to enhance your experience:
+                </p>
+                <ul>
+                    <li><strong>Essential Cookies:</strong> Required for basic website functionality</li>
+                    <li><strong>Analytics Cookies:</strong> Help us understand how visitors use our website</li>
+                    <li><strong>Marketing Cookies:</strong> Used to deliver relevant advertisements</li>
+                    <li><strong>Preference Cookies:</strong> Remember your settings and preferences</li>
+                </ul>
+                <p>
+                    You can manage cookie preferences through your browser settings or our cookie consent tool.
+                </p>
+
+                <h2>8. International Data Transfers</h2>
+                <p>
+                    As we use international cloud services and partners, your information may be transferred to and processed in countries 
+                    outside Malaysia. We ensure appropriate safeguards are in place, including:
+                </p>
+                <ul>
+                    <li>Standard contractual clauses approved by data protection authorities</li>
+                    <li>Adequacy decisions by relevant regulatory bodies</li>
+                    <li>Certification schemes and codes of conduct</li>
+                </ul>
+
+                <h2>9. Children's Privacy</h2>
+                <p>
+                    Our services are not intended for individuals under the age of 18. We do not knowingly collect personal information 
+                    from children. If we become aware that we have collected personal information from a child, we will delete it promptly.
+                </p>
+
+                <h2>10. Changes to This Privacy Policy</h2>
+                <p>
+                    We may update this Privacy Policy from time to time to reflect changes in our practices or legal requirements. 
+                    We will notify you of material changes by:
+                </p>
+                <ul>
+                    <li>Posting the updated policy on our website</li>
+                    <li>Sending email notifications to registered users</li>
+                    <li>Providing notice through our services</li>
+                </ul>
+                <p>
+                    Your continued use of our services after the effective date constitutes acceptance of the updated Privacy Policy.
+                </p>
+
+                <h2>11. Compliance with Malaysian Laws</h2>
+                <p>
+                    AIFlow Solution complies with the Personal Data Protection Act 2010 (PDPA) of Malaysia and other applicable 
+                    data protection regulations. We are committed to protecting your privacy rights under Malaysian law.
+                </p>
+            </div>
+
+            <!-- Contact Information -->
+            <div class="contact-info">
+                <h3>Questions About This Privacy Policy?</h3>
+                <p>
+                    If you have any questions about this Privacy Policy or our data practices, 
+                    please don't hesitate to contact us.
+                </p>
+                <p>
+                    <strong>Email:</strong> <a href="mailto:privacy@aiflowsolution.com">privacy@aiflowsolution.com</a><br>
+                    <strong>Phone:</strong> <a href="tel:+60115346367">+60 11-5346 3627</a><br>
+                    <strong>Address:</strong> Kuala Lumpur, Malaysia
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 AIFlow Solution Sdn. Bhd. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" onclick="scrollToTop()">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Back to top functionality
+        window.addEventListener('scroll', () => {
+            const backToTop = document.querySelector('.back-to-top');
+            if (window.scrollY > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Mobile menu toggle (placeholder)
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            alert('Mobile menu - to be implemented');
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

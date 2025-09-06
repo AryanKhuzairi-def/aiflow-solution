@@ -1,0 +1,1309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manufacturing & Operations AI Automation - AIFlow Solution</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary-color: #6366f1;
+            --secondary-color: #8b5cf6;
+            --accent-color: #06b6d4;
+            --manufacturing-color: #dc2626;
+            --operations-color: #ea580c;
+            --dark-bg: #0f172a;
+            --light-bg: #f8fafc;
+            --text-dark: #1e293b;
+            --text-light: #64748b;
+            --white: #ffffff;
+            --gradient: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #06b6d4 100%);
+            --manufacturing-gradient: linear-gradient(135deg, #dc2626 0%, #ea580c 50%, #f59e0b 100%);
+            --operations-gradient: linear-gradient(135deg, #1e40af 0%, #3b82f6 50%, #06b6d4 100%);
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+        
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(99, 102, 241, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .navbar.scrolled {
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--gradient);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 0.75rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .logo-icon::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 20px;
+            height: 20px;
+            background: white;
+            border-radius: 4px;
+            opacity: 0.9;
+        }
+        
+        .logo-icon::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 12px;
+            height: 12px;
+            background: var(--primary-color);
+            border-radius: 2px;
+            z-index: 1;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+        
+        .cta-button {
+            background: var(--gradient);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 12px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
+        }
+        
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #7c2d12 0%, #dc2626 50%, #ea580c 100%);
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="manufacturing-pattern" width="20" height="20" patternUnits="userSpaceOnUse"><rect width="20" height="20" fill="none"/><circle cx="10" cy="10" r="1" fill="%23f97316" opacity="0.2"/><rect x="5" y="5" width="10" height="10" fill="none" stroke="%23f97316" stroke-width="0.5" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23manufacturing-pattern)"/></svg>');
+            opacity: 0.3;
+        }
+        
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: white;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+        
+        .hero-content .highlight {
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 50%, #d97706 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero-content p {
+            font-size: 1.25rem;
+            color: #fed7aa;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+        
+        .btn-primary {
+            background: var(--manufacturing-gradient);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 12px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(220, 38, 38, 0.3);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            padding: 1rem 2rem;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(220, 38, 38, 0.4);
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.4);
+        }
+        
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #fbbf24;
+            display: block;
+        }
+        
+        .stat-label {
+            color: #fed7aa;
+            font-size: 0.9rem;
+        }
+        
+        .hero-visual {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .manufacturing-demo {
+            width: 420px;
+            height: 380px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            position: relative;
+        }
+        
+        .manufacturing-item {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 12px;
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            backdrop-filter: blur(10px);
+            transform: translateX(-100px);
+            opacity: 0;
+            animation: slideIn 0.6s ease forwards;
+        }
+        
+        .manufacturing-item:nth-child(1) { animation-delay: 0.2s; }
+        .manufacturing-item:nth-child(2) { animation-delay: 0.4s; }
+        .manufacturing-item:nth-child(3) { animation-delay: 0.6s; }
+        .manufacturing-item:nth-child(4) { animation-delay: 0.8s; }
+        .manufacturing-item:nth-child(5) { animation-delay: 1.0s; }
+        
+        @keyframes slideIn {
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        
+        .manufacturing-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--manufacturing-gradient);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 5rem 0;
+            background: var(--light-bg);
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .section-subtitle {
+            color: var(--manufacturing-color);
+            font-weight: 600;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.5rem;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+        
+        .section-description {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--manufacturing-gradient);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+            transform-origin: left;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .feature-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--manufacturing-gradient);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+        
+        .feature-card p {
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+        
+        /* Use Cases Section */
+        .use-cases {
+            padding: 5rem 0;
+            background: white;
+        }
+        
+        .use-cases-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .use-case {
+            background: var(--light-bg);
+            padding: 2rem;
+            border-radius: 20px;
+            border-left: 4px solid var(--manufacturing-color);
+        }
+        
+        .use-case-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .use-case-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--manufacturing-gradient);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.3rem;
+        }
+        
+        .use-case h3 {
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+        
+        .use-case p {
+            color: var(--text-light);
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+        
+        .benefits {
+            list-style: none;
+        }
+        
+        .benefits li {
+            padding: 0.25rem 0;
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+        }
+        
+        .benefits li::before {
+            content: '✓';
+            color: var(--manufacturing-color);
+            font-weight: bold;
+        }
+        
+        /* ROI Section */
+        .roi-section {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, #fef7ed 0%, #fed7aa 100%);
+        }
+        
+        .roi-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            margin-top: 3rem;
+        }
+        
+        .roi-metrics {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+        
+        .roi-metric {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .roi-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--manufacturing-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .roi-label {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .roi-content h3 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-dark);
+        }
+        
+        .roi-content p {
+            color: var(--text-light);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            padding: 5rem 0;
+            background: var(--dark-bg);
+            text-align: center;
+        }
+        
+        .cta-section h2 {
+            color: white;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .cta-section p {
+            color: #94a3b8;
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 2rem;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .hero-stats {
+                grid-template-columns: repeat(1, 1fr);
+            }
+            
+            .manufacturing-demo {
+                width: 300px;
+                height: 320px;
+            }
+            
+            .roi-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .roi-metrics {
+                grid-template-columns: 1fr;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+        
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MNYLCBKK9C"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-MNYLCBKK9C');
+</script>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon"></div>
+                AIFlow Solution
+            </a>
+            
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#services">All Services</a></li>
+                <li><a href="index.html#pricing">Pricing</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+            
+            <a href="index.html#contact" class="cta-button">Get Started</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1>
+<br>
+                    <span class="highlight">Smart Manufacturing</span><br>
+                    & Operations<br>
+                    AI Automation
+                </h1>
+                <p>
+                    Revolutionize your manufacturing processes with intelligent automation. 
+                    Optimize production schedules, predict maintenance needs, and streamline 
+                    operations for maximum efficiency and profitability.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#demo" class="btn-primary">
+                        <i class="fas fa-play"></i>
+                        Watch Demo
+                    </a>
+                    <a href="#features" class="btn-secondary">
+                        View Solutions
+                    </a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">45%</span>
+                        <span class="stat-label">Efficiency Increase</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">30%</span>
+                        <span class="stat-label">Cost Reduction</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">99.2%</span>
+                        <span class="stat-label">Quality Score</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="hero-visual">
+                <div class="manufacturing-demo">
+                    <div class="manufacturing-item">
+                        <div class="manufacturing-icon">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                        <div>
+                            <div style="color: white; font-weight: 600;">Production Optimization</div>
+                            <div style="color: #fed7aa; font-size: 0.9rem;">Smart scheduling & routing</div>
+                        </div>
+                    </div>
+                    <div class="manufacturing-item">
+                        <div class="manufacturing-icon">
+                            <i class="fas fa-tools"></i>
+                        </div>
+                        <div>
+                            <div style="color: white; font-weight: 600;">Predictive Maintenance</div>
+                            <div style="color: #fed7aa; font-size: 0.9rem;">Equipment health monitoring</div>
+                        </div>
+                    </div>
+                    <div class="manufacturing-item">
+                        <div class="manufacturing-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div>
+                            <div style="color: white; font-weight: 600;">Quality Control</div>
+                            <div style="color: #fed7aa; font-size: 0.9rem;">AI-powered inspection</div>
+                        </div>
+                    </div>
+                    <div class="manufacturing-item">
+                        <div class="manufacturing-icon">
+                            <i class="fas fa-boxes"></i>
+                        </div>
+                        <div>
+                            <div style="color: white; font-weight: 600;">Inventory Management</div>
+                            <div style="color: #fed7aa; font-size: 0.9rem;">Smart stock optimization</div>
+                        </div>
+                    </div>
+                    <div class="manufacturing-item">
+                        <div class="manufacturing-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div>
+                            <div style="color: white; font-weight: 600;">Safety Monitoring</div>
+                            <div style="color: #fed7aa; font-size: 0.9rem;">Real-time risk detection</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-subtitle">Core Solutions</div>
+                <h2 class="section-title">Complete Manufacturing Automation</h2>
+                <p class="section-description">
+                    Transform every aspect of your manufacturing operations with our comprehensive 
+                    AI-powered automation solutions designed for Malaysian manufacturers.
+                </p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-industry"></i>
+                    </div>
+                    <h3>Smart Production Planning</h3>
+                    <p>AI-optimized production schedules that adapt to demand fluctuations, resource availability, and delivery deadlines. Maximize throughput while minimizing waste and bottlenecks.</p>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-wrench"></i>
+                    </div>
+                    <h3>Predictive Maintenance</h3>
+                    <p>Monitor equipment health in real-time and predict failures before they happen. Reduce downtime by up to 50% with AI-powered maintenance scheduling and parts management.</p>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                    <h3>Quality Control Automation</h3>
+                    <p>Computer vision and AI inspect products with superhuman accuracy. Detect defects, measure dimensions, and ensure consistent quality across all production lines.</p>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-warehouse"></i>
+                    </div>
+                    <h3>Intelligent Inventory Control</h3>
+                    <p>Optimize stock levels with demand forecasting and automated reordering. Track materials from receiving to finished goods with RFID and barcode integration.</p>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-clipboard-check"></i>
+                    </div>
+                    <h3>Process Optimization</h3>
+                    <p>Continuously analyze and improve manufacturing processes. Identify inefficiencies, reduce cycle times, and implement lean manufacturing principles automatically.</p>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-hard-hat"></i>
+                    </div>
+                    <h3>Safety & Compliance</h3>
+                    <p>Monitor workplace safety with computer vision and IoT sensors. Ensure compliance with OSHA and Malaysian DOSH regulations through automated reporting and alerts.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Use Cases Section -->
+    <section class="use-cases">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-subtitle">Industry Applications</div>
+                <h2 class="section-title">Tailored for Malaysian Manufacturing</h2>
+                <p class="section-description">
+                    Our manufacturing automation solutions are specifically designed for 
+                    various manufacturing sectors across Malaysia.
+                </p>
+            </div>
+            
+            <div class="use-cases-grid">
+                <div class="use-case fade-in">
+                    <div class="use-case-header">
+                        <div class="use-case-icon">
+                            <i class="fas fa-microchip"></i>
+                        </div>
+                        <h3>Electronics & Semiconductors</h3>
+                    </div>
+                    <p>Optimize clean room operations, manage complex supply chains, and ensure precision assembly with AI-powered quality control and defect detection.</p>
+                    <ul class="benefits">
+                        <li>Semiconductor wafer inspection automation</li>
+                        <li>PCB assembly line optimization</li>
+                        <li>Component traceability systems</li>
+                        <li>Clean room environmental monitoring</li>
+                    </ul>
+                </div>
+                
+                <div class="use-case fade-in">
+                    <div class="use-case-header">
+                        <div class="use-case-icon">
+                            <i class="fas fa-car"></i>
+                        </div>
+                        <h3>Automotive Manufacturing</h3>
+                    </div>
+                    <p>Streamline vehicle assembly, manage just-in-time inventory, and implement quality control systems for automotive parts and components manufacturing.</p>
+                    <ul class="benefits">
+                        <li>Assembly line balancing and optimization</li>
+                        <li>Automotive parts quality inspection</li>
+                        <li>Paint booth automation and monitoring</li>
+                        <li>Supply chain coordination</li>
+                    </ul>
+                </div>
+                
+                <div class="use-case fade-in">
+                    <div class="use-case-header">
+                        <div class="use-case-icon">
+                            <i class="fas fa-prescription-bottle"></i>
+                        </div>
+                        <h3>Pharmaceutical & Healthcare</h3>
+                    </div>
+                    <p>Ensure regulatory compliance, maintain batch traceability, and automate sterile manufacturing processes with validated AI systems.</p>
+                    <ul class="benefits">
+                        <li>GMP compliance monitoring</li>
+                        <li>Batch record automation</li>
+                        <li>Sterile processing validation</li>
+                        <li>Drug serialization and tracking</li>
+                    </ul>
+                </div>
+                
+                <div class="use-case fade-in">
+                    <div class="use-case-header">
+                        <div class="use-case-icon">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <h3>Food & Beverage Processing</h3>
+                    </div>
+                    <p>Maintain food safety standards, optimize production recipes, and manage cold chain logistics with HACCP-compliant automation systems.</p>
+                    <ul class="benefits">
+                        <li>HACCP monitoring and documentation</li>
+                        <li>Recipe optimization and consistency</li>
+                        <li>Cold chain temperature tracking</li>
+                        <li>Packaging line efficiency</li>
+                    </ul>
+                </div>
+                
+                <div class="use-case fade-in">
+                    <div class="use-case-header">
+                        <div class="use-case-icon">
+                            <i class="fas fa-tshirt"></i>
+                        </div>
+                        <h3>Textile & Apparel</h3>
+                    </div>
+                    <p>Optimize fabric cutting, manage garment assembly lines, and ensure quality control in textile manufacturing and apparel production.</p>
+                    <ul class="benefits">
+                        <li>Fabric defect detection systems</li>
+                        <li>Cutting optimization algorithms</li>
+                        <li>Garment quality inspection</li>
+                        <li>Production line balancing</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ROI Section -->
+    <section class="roi-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-subtitle">Proven Results</div>
+                <h2 class="section-title">Manufacturing Performance Impact</h2>
+                <p class="section-description">
+                    Malaysian manufacturers using our automation solutions report significant 
+                    improvements in productivity, quality, and operational efficiency.
+                </p>
+            </div>
+            
+            <div class="roi-grid">
+                <div class="roi-content">
+                    <h3>Transform Your Manufacturing Operations</h3>
+                    <p>
+                        Our AI-powered manufacturing solutions deliver measurable results from day one. 
+                        See how Malaysian manufacturers are achieving operational excellence with intelligent automation.
+                    </p>
+                    <a href="#contact" class="btn-primary">
+                        <i class="fas fa-calculator"></i>
+                        Calculate Your ROI
+                    </a>
+                </div>
+                
+                <div class="roi-metrics">
+                    <div class="roi-metric fade-in">
+                        <div class="roi-number">45%</div>
+                        <div class="roi-label">Productivity Boost</div>
+                    </div>
+                    <div class="roi-metric fade-in">
+                        <div class="roi-number">60%</div>
+                        <div class="roi-label">Defect Reduction</div>
+                    </div>
+                    <div class="roi-metric fade-in">
+                        <div class="roi-number">35%</div>
+                        <div class="roi-label">Cost Savings</div>
+                    </div>
+                    <div class="roi-metric fade-in">
+                        <div class="roi-number">50%</div>
+                        <div class="roi-label">Less Downtime</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Demo Section -->
+    <section class="demo-section" id="demo" style="padding: 5rem 0; background: white;">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-subtitle">See It In Action</div>
+                <h2 class="section-title">Live Demo: Smart Factory Operations</h2>
+                <p class="section-description">
+                    Experience how our AI transforms manufacturing operations in real-time. 
+                    Watch production optimization, quality control, and predictive maintenance in action.
+                </p>
+            </div>
+            
+            <div style="max-width: 900px; margin: 0 auto; background: var(--light-bg); border-radius: 20px; padding: 2rem; text-align: center;">
+                <div style="background: white; border-radius: 15px; padding: 2rem; box-shadow: 0 4px 20px rgba(0,0,0,0.1); margin-bottom: 2rem;">
+                    <h4 style="margin-bottom: 1.5rem; color: var(--text-dark);">Demo Highlights</h4>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; text-align: left;">
+                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                            <i class="fas fa-check" style="color: var(--manufacturing-color);"></i>
+                            <span>Real-time Production Dashboard</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                            <i class="fas fa-check" style="color: var(--manufacturing-color);"></i>
+                            <span>AI-Powered Quality Inspection</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                            <i class="fas fa-check" style="color: var(--manufacturing-color);"></i>
+                            <span>Predictive Maintenance Alerts</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                            <i class="fas fa-check" style="color: var(--manufacturing-color);"></i>
+                            <span>Smart Inventory Management</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                            <i class="fas fa-check" style="color: var(--manufacturing-color);"></i>
+                            <span>Energy Optimization Systems</span>
+                        </div>
+                        <div style="display: flex; align-items; center; gap: 0.5rem;">
+                            <i class="fas fa-check" style="color: var(--manufacturing-color);"></i>
+                            <span>Safety Monitoring Integration</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <a href="#contact" class="btn-primary" style="font-size: 1.1rem; padding: 1.2rem 2.5rem;">
+                    <i class="fas fa-calendar"></i>
+                    Schedule Factory Demo
+                </a>
+                <p style="margin-top: 1rem; color: var(--text-light); font-size: 0.9rem;">
+                    30-minute personalized demonstration • On-site or virtual • No commitment required
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Integration Section -->
+    <section class="integration-section" style="padding: 5rem 0; background: var(--light-bg);">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-subtitle">System Integration</div>
+                <h2 class="section-title">Seamless Manufacturing Ecosystem</h2>
+                <p class="section-description">
+                    Our solutions integrate with existing manufacturing systems, ERP platforms, 
+                    and industrial equipment for unified operations management.
+                </p>
+            </div>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 3rem;">
+                <div style="background: white; border-radius: 15px; padding: 2rem; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                    <div style="width: 60px; height: 60px; background: var(--manufacturing-gradient); border-radius: 15px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; margin: 0 auto 1rem;">
+                        <i class="fas fa-network-wired"></i>
+                    </div>
+                    <h3 style="margin-bottom: 1rem; color: var(--text-dark);">ERP Integration</h3>
+                    <p style="color: var(--text-light); margin-bottom: 1rem;">Connect with SAP, Oracle, Microsoft Dynamics, and other enterprise systems for unified data flow.</p>
+                    <ul style="list-style: none; text-align: left; color: var(--text-light); font-size: 0.9rem;">
+                        <li style="padding: 0.25rem 0;">• Real-time data synchronization</li>
+                        <li style="padding: 0.25rem 0;">• Automated reporting workflows</li>
+                        <li style="padding: 0.25rem 0;">• Financial integration</li>
+                    </ul>
+                </div>
+                
+                <div style="background: white; border-radius: 15px; padding: 2rem; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                    <div style="width: 60px; height: 60px; background: var(--manufacturing-gradient); border-radius: 15px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; margin: 0 auto 1rem;">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3 style="margin-bottom: 1rem; color: var(--text-dark);">Industrial IoT</h3>
+                    <p style="color: var(--text-light); margin-bottom: 1rem;">Connect machinery, sensors, and equipment for comprehensive monitoring and control.</p>
+                    <ul style="list-style: none; text-align: left; color: var(--text-light); font-size: 0.9rem;">
+                        <li style="padding: 0.25rem 0;">• PLC and SCADA integration</li>
+                        <li style="padding: 0.25rem 0;">• Sensor data collection</li>
+                        <li style="padding: 0.25rem 0;">• Equipment control systems</li>
+                    </ul>
+                </div>
+                
+                <div style="background: white; border-radius: 15px; padding: 2rem; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                    <div style="width: 60px; height: 60px; background: var(--manufacturing-gradient); border-radius: 15px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; margin: 0 auto 1rem;">
+                        <i class="fas fa-cloud"></i>
+                    </div>
+                    <h3 style="margin-bottom: 1rem; color: var(--text-dark);">Cloud & Edge Computing</h3>
+                    <p style="color: var(--text-light); margin-bottom: 1rem;">Hybrid cloud-edge architecture for real-time processing and secure data management.</p>
+                    <ul style="list-style: none; text-align: left; color: var(--text-light); font-size: 0.9rem;">
+                        <li style="padding: 0.25rem 0;">• Local edge processing</li>
+                        <li style="padding: 0.25rem 0;">• Cloud-based analytics</li>
+                        <li style="padding: 0.25rem 0;">• Secure data storage</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing-section" style="padding: 5rem 0; background: white;">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-subtitle">Investment Plans</div>
+                <h2 class="section-title">Manufacturing Automation Packages</h2>
+                <p class="section-description">
+                    Flexible pricing options designed for manufacturers of all sizes, 
+                    from SMEs to large-scale industrial operations.
+                </p>
+            </div>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; margin-top: 3rem;">
+                <div style="background: var(--light-bg); border: 2px solid #e2e8f0; border-radius: 20px; padding: 2rem; text-align: center; transition: all 0.3s ease;">
+                    <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: var(--text-dark);">Production Starter</h3>
+                    <div style="font-size: 2.5rem; font-weight: 700; color: var(--manufacturing-color); margin-bottom: 0.5rem;">RM2,999</div>
+                    <div style="color: var(--text-light); margin-bottom: 2rem;">per month</div>
+                    <ul style="list-style: none; margin-bottom: 2rem; text-align: left;">
+                        <li style="padding: 0.5rem 0; display: flex; align-items: center; gap: 0.5rem;">
+                            <i class="fas fa-check" style="color: var(--manufacturing-color);"></i>
+                            Up to 5 production lines
+                        </li>
+                        <li style="padding: 0.5rem 0; display: flex; align-items: center; gap: 0.5rem;">
+                            <i class="fas fa-check" style="color: var(--manufacturing-color);"></i>
+                            Basic quality control automation
+                        </li>
+                        <li style="padding: 0.5rem 0; display: flex; align-items: center; gap: 0.5rem;">
+                            <i class="fas fa-check" style="color: var(--manufacturing-color);"></i>
+                            Production monitoring dashboard
+                        </li>
+                        <li style="padding: 0.5rem 0; display: flex; align-items: center; gap: 0.5rem;">
+                            <i class="fas fa-check" style="color: var(--manufacturing-color);"></i>
+                            WhatsApp & email alerts
+                        </li>
+                        <li style="padding: 0.5rem 0; display: flex; align-items: center; gap: 0.5rem;">
+                            <i class="fas fa-check" style="color: var(--manufacturing-color);"></i>
+                            Monthly reports
+                        </li>
+                    </ul>
+                    <a href="#contact" class="btn-primary" style="width: 100%;">Get Started</a>
+                </div>
+                
+                <div style="background: white; border: 2px solid var(--manufacturing-color); border-radius: 20px; padding: 2rem; text-align: center; transform: scale(1.05); box-shadow: 0 8px 30px rgba(220, 38, 38, 0.2); position: relative;">
+                    <div style="position: absolute; top: -10px; left: 50%; transform: translateX(-50%); background: var(--manufacturing-gradient); color: white; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600;">Most Popular</div>
+                    <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: var(--text-dark);">Smart Factory</h3>
+                    <div style="font-size: 2.5rem; font-weight: 700; color: var(--manufacturing-color); margin-bottom: 0.5rem;">RM7,999</div>
+                    <div style="color: var(--text-light); margin-bottom: 2rem;">per month</div>
+                    <ul style="list-style: none; margin-bottom: 2rem; text-align: left;">
+                        <li style="padding: 0.5rem 0; display: flex; align-items: center; gap: 0.5rem;">
+                            <i class="fas fa-check" style="color: var(--manufacturing-color);"></i>
+                            Up to 20 production lines
+                        </li>
+                        <li style="padding: 0.5rem 0; display: flex; align-items: center; gap: 0.5rem;">
+                            <i class="fas fa-check" style="color: var(--manufacturing-color);"></i>
+                            Advanced AI quality control
+                        </li>
+                        <li style="padding: 0.5rem 0; display: flex; align-items: center; gap: 0.5rem;">
+                            <i class="fas fa-check" style="color: var(--manufacturing-color);"></i>
+                            Predictive maintenance system
+                        </li>
+                        <li style="padding: 0.5rem 0; display: flex; align-items: center; gap: 0.5rem;">
+                            <i class="fas fa-check" style="color: var(--manufacturing-color);"></i>
+                            Inventory optimization
+                        </li>
+                        <li style="padding: 0.5rem 0; display: flex; align-items: center; gap: 0.5rem;">
+                            <i class="fas fa-check" style="color: var(--manufacturing-color);"></i>
+                            ERP integration
+                        </li>
+                        <li style="padding: 0.5rem 0; display: flex; align-items: center; gap: 0.5rem;">
+                            <i class="fas fa-check" style="color: var(--manufacturing-color);"></i>
+                            Real-time analytics
+                        </li>
+                    </ul>
+                    <a href="#contact" class="btn-primary" style="width: 100%;">Get Started</a>
+                </div>
+                
+                <div style="background: var(--light-bg); border: 2px solid #e2e8f0; border-radius: 20px; padding: 2rem; text-align: center; transition: all 0.3s ease;">
+                    <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: var(--text-dark);">Industrial Enterprise</h3>
+                    <div style="font-size: 2.5rem; font-weight: 700; color: var(--manufacturing-color); margin-bottom: 0.5rem;">Custom</div>
+                    <div style="color: var(--text-light); margin-bottom: 2rem;">contact us</div>
+                    <ul style="list-style: none; margin-bottom: 2rem; text-align: left;">
+                        <li style="padding: 0.5rem 0; display: flex; align-items: center; gap: 0.5rem;">
+                            <i class="fas fa-check" style="color: var(--manufacturing-color);"></i>
+                            Unlimited production lines
+                        </li>
+                        <li style="padding: 0.5rem 0; display: flex; align-items: center; gap: 0.5rem;">
+                            <i class="fas fa-check" style="color: var(--manufacturing-color);"></i>
+                            Custom AI model training
+                        </li>
+                        <li style="padding: 0.5rem 0; display: flex; align-items: center; gap: 0.5rem;">
+                            <i class="fas fa-check" style="color: var(--manufacturing-color);"></i>
+                            Multi-site integration
+                        </li>
+                        <li style="padding: 0.5rem 0; display: flex; align-items: center; gap: 0.5rem;">
+                            <i class="fas fa-check" style="color: var(--manufacturing-color);"></i>
+                            Dedicated support team
+                        </li>
+                        <li style="padding: 0.5rem 0; display: flex; align-items: center; gap: 0.5rem;">
+                            <i class="fas fa-check" style="color: var(--manufacturing-color);"></i>
+                            Custom integrations
+                        </li>
+                        <li style="padding: 0.5rem 0; display: flex; align-items: center; gap: 0.5rem;">
+                            <i class="fas fa-check" style="color: var(--manufacturing-color);"></i>
+                            24/7 monitoring & support
+                        </li>
+                    </ul>
+                    <a href="#contact" class="btn-primary" style="width: 100%;">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section" style="padding: 5rem 0; background: var(--light-bg);">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-subtitle">Common Questions</div>
+                <h2 class="section-title">Manufacturing Automation FAQ</h2>
+            </div>
+            
+            <div style="max-width: 800px; margin: 0 auto; margin-top: 3rem;">
+                <div style="background: white; border-radius: 15px; padding: 2rem; margin-bottom: 1rem; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
+                    <h4 style="color: var(--text-dark); margin-bottom: 1rem;">How long does it take to implement manufacturing automation?</h4>
+                    <p style="color: var(--text-light);">Implementation typically takes 2-6 weeks depending on complexity. We start with pilot lines first, then expand across your facility with minimal disruption to ongoing operations.</p>
+                </div>
+                
+                <div style="background: white; border-radius: 15px; padding: 2rem; margin-bottom: 1rem; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
+                    <h4 style="color: var(--text-dark); margin-bottom: 1rem;">Will this work with our existing equipment and systems?</h4>
+                    <p style="color: var(--text-light);">Yes! Our solutions are designed to integrate with existing machinery, PLCs, SCADA systems, and ERP platforms. We conduct thorough compatibility assessments before implementation.</p>
+                </div>
+                
+                <div style="background: white; border-radius: 15px; padding: 2rem; margin-bottom: 1rem; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
+                    <h4 style="color: var(--text-dark); margin-bottom: 1rem;">What kind of ROI can we expect from manufacturing automation?</h4>
+                    <p style="color: var(--text-light);">Most clients see 25-45% efficiency improvements and 30-60% defect reduction within 6 months. Complete ROI is typically achieved in 12-18 months through reduced waste, improved quality, and increased throughput.</p>
+                </div>
+                
+                <div style="background: white; border-radius: 15px; padding: 2rem; margin-bottom: 1rem; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
+                    <h4 style="color: var(--text-dark); margin-bottom: 1rem;">Do you provide training for our operators and technicians?</h4>
+                    <p style="color: var(--text-light);">Absolutely. We provide comprehensive training programs for operators, technicians, and management. This includes system operation, troubleshooting, and best practices for maximizing automation benefits.</p>
+                </div>
+                
+                <div style="background: white; border-radius: 15px; padding: 2rem; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
+                    <h4 style="color: var(--text-dark); margin-bottom: 1rem;">Is our manufacturing data secure with cloud-based systems?</h4>
+                    <p style="color: var(--text-light);">Yes. We use industrial-grade security with end-to-end encryption, local data processing where required, and compliance with Malaysian data protection regulations. Your sensitive data never leaves your designated secure environment.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" id="contact">
+        <div class="container">
+            <h2>Ready to Transform Your Manufacturing?</h2>
+            <p>
+                Join leading Malaysian manufacturers who have revolutionized their operations 
+                with AI-powered automation. Start your digital transformation journey today.
+            </p>
+            <div class="cta-buttons">
+                <a href="index.html#contact" class="btn-primary" style="font-size: 1.1rem; padding: 1.2rem 2.5rem;">
+                    <i class="fas fa-calendar"></i>
+                    Schedule Factory Assessment
+                </a>
+                <a href="tel:+60115346367" class="btn-secondary" style="font-size: 1.1rem; padding: 1.2rem 2.5rem;">
+                    <i class="fas fa-phone"></i>
+                    Call +60 11-5346 3627
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Add hover effects for pricing cards
+        const pricingCards = document.querySelectorAll('[style*="background: var(--light-bg)"]');
+        pricingCards.forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-5px)';
+                this.style.boxShadow = '0 8px 25px rgba(0,0,0,0.15)';
+            });
+            card.addEventListener('mouseleave', function() {
+                if (!this.style.transform.includes('scale')) {
+                    this.style.transform = 'translateY(0)';
+                    this.style.boxShadow = '0 4px 15px rgba(0,0,0,0.1)';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+                
+                
