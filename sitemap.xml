@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+
+    <!-- Main Homepage -->
+    <url>
+        <loc>https://aryankhuzairi-def.github.io/aiflow-solution/</loc>
+        <lastmod>2025-09-06</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+    </url>
+
+    <!-- Accounting & Finance Landing Page -->
+    <url>
+        <loc>https://aryankhuzairi-def.github.io/aiflow-solution/accounting_finance_landing.html</loc>
+        <lastmod>2025-09-06</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- Add other landing pages when you create them -->
+    <!-- 
+    <url>
+        <loc>https://aryankhuzairi-def.github.io/aiflow-solution/hr_recruitment_landing.html</loc>
+        <lastmod>2025-09-06</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://aryankhuzairi-def.github.io/aiflow-solution/logistics_supply_chain_landing.html</loc>
+        <lastmod>2025-09-06</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://aryankhuzairi-def.github.io/aiflow-solution/customer_service_sales_landing.html</loc>
+        <lastmod>2025-09-06</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://aryankhuzairi-def.github.io/aiflow-solution/manufacturing_operations_landing.html</loc>
+        <lastmod>2025-09-06</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    -->
+
+</urlset>
