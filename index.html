@@ -144,17 +144,17 @@
         }
         
         :root {
-            --primary-color: #6366f1;
-            --secondary-color: #8b5cf6;
-            --accent-color: #06b6d4;
-            --dark-bg: #0f172a;
-            --light-bg: #f8fafc;
-            --text-dark: #1e293b;
-            --text-light: #64748b;
-            --white: #ffffff;
-            --gradient: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #06b6d4 100%);
-        }
-        
+    		--primary-color: #6366f1;
+		    --secondary-color: #8b5cf6;
+		    --accent-color: #06b6d4;
+		    --dark-bg: #0f172a;
+		    --light-bg: #f8fafc;
+		    --text-dark: #1e293b;
+		    --text-light: #475569; 
+		    --white: #ffffff;
+		    --gradient: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #06b6d4 100%);
+		}
+		        
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             line-height: 1.6;
@@ -520,13 +520,13 @@
         }
         
         .section-subtitle {
-            color: var(--primary-color);
-            font-weight: 600;
-            font-size: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            margin-bottom: 0.5rem;
-        }
+   			color: #1e293b; 
+   			font-weight: 600;
+    		font-size: 1rem;
+    		text-transform: uppercase;
+    		letter-spacing: 0.1em;
+    		margin-bottom: 0.5rem;
+		}
         
         .section-title {
             font-size: 2.5rem;
@@ -611,12 +611,12 @@
         }
         
         .service-features li {
-            padding: 0.5rem 0;
-            color: var(--text-light);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
+		    padding: 0.5rem 0;
+		    color: #475569; 
+		    display: flex;
+		    align-items: center;
+		    gap: 0.5rem;
+		}
         
         .service-features li::before {
             content: '✓';
@@ -726,13 +726,13 @@
             margin-bottom: 2rem;
         }
         
-        .pricing-features li {
-            padding: 0.75rem 0;
-            color: var(--text-dark);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
+       .pricing-features li {
+		    padding: 0.75rem 0;
+		    color: #1e293b; 
+		    display: flex;
+		    align-items: center;
+		    gap: 0.5rem;
+		}
         
         .pricing-features li::before {
             content: '✓';
@@ -778,12 +778,12 @@
             color: var(--accent-color);
         }
         
-        .footer-bottom {
-            border-top: 1px solid #334155;
-            padding-top: 1rem;
-            text-align: center;
-            color: #94a3b8;
-        }
+       .footer-bottom {
+		    border-top: 1px solid #334155;
+		    padding-top: 1rem;
+		    text-align: center;
+		    color: #cbd5e1; 
+		}
             /* Option styling for modern browsers */
         .custom-select select option {
             padding: 0.75rem;
@@ -1252,7 +1252,7 @@ input, textarea {
     </section>
 
     <!-- About Section -->
-    <section class="about" id="about" style="padding: 5rem 0; background: var(--light-bg);">
+    <section class="about" id="about" style="padding: 5rem 0; background: white;">
         <div class="container">
             <div class="section-header">
                 <div class="section-subtitle">About AIFlow</div>
@@ -1388,7 +1388,7 @@ input, textarea {
                 </div>
                 
                 <div>
-                    <form id="contactForm" style="background: var(--light-bg); padding: 2rem; border-radius: 20px;" aria-label="Contact Form for AI Automation Consultation">
+                    <form id="contactForm" style="background: #ffffff; padding: 2rem; border-radius: 20px;" aria-label="Contact Form for AI Automation Consultation">
                         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
                             <input type="text" name="firstName" placeholder="First Name" required style="padding: 1rem; border: 2px solid #e2e8f0; border-radius: 10px; font-size: 1rem;" aria-label="First Name">
                             <input type="text" name="lastName" placeholder="Last Name" required style="padding: 1rem; border: 2px solid #e2e8f0; border-radius: 10px; font-size: 1rem;" aria-label="Last Name">
