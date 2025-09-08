@@ -28,6 +28,7 @@
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             line-height: 1.6;
             color: var(--text-dark);
+            overflow-x: hidden;
         }
         
         /* Navigation */
@@ -157,6 +158,7 @@
             display: none;
             flex-direction: column;
             cursor: pointer;
+            padding: 5px;
         }
         
         .mobile-menu span {
@@ -167,7 +169,7 @@
             transition: 0.3s;
             border-radius: 2px;
         }
-
+        
         /* Mobile Navigation */
         .nav-links.mobile-active {
             display: flex !important;
@@ -343,6 +345,67 @@
             color: #94a3b8;
         }
         
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            /* Hide desktop navigation */
+            .nav-links {
+                display: none;
+            }
+            
+            /* Show mobile menu button */
+            .mobile-menu {
+                display: flex;
+            }
+            
+            /* Hide desktop back button on mobile */
+            .back-button {
+                display: none;
+            }
+            
+            /* Adjust logo size */
+            .logo {
+                font-size: 1.2rem;
+            }
+            
+            .logo-icon {
+                width: 32px;
+                height: 32px;
+                margin-right: 0.5rem;
+            }
+            
+            /* Adjust navbar padding */
+            .nav-container {
+                padding: 0 1rem;
+            }
+            
+            .page-title {
+                font-size: 2rem;
+            }
+            
+            .privacy-content {
+                padding: 2rem;
+                margin: 0 -1rem 3rem;
+            }
+            
+            .page-header {
+                margin: -20px -1rem 3rem;
+                padding: 2rem 1rem;
+            }
+            
+            .container {
+                padding: 0 1rem;
+            }
+            
+            .contact-info {
+                margin: 0 -1rem 3rem;
+            }
+        }
+        
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+        
         /* Back to top button */
         .back-to-top {
             position: fixed;
@@ -372,94 +435,8 @@
         .back-to-top.visible {
             display: flex;
         }
-
-        /* Smooth scrolling */
-        html {
-            scroll-behavior: smooth;
-        }
-        
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            /* Make logo/company name smaller and cleaner */
-            .logo {
-                font-size: 1.1rem;
-                font-weight: 600;
-            }
-            
-            .logo-icon {
-                width: 32px;
-                height: 32px;
-                margin-right: 0.5rem;
-            }
-            
-            /* Adjust navbar padding */
-            .nav-container {
-                padding: 0 1rem;
-            }
-            
-            /* Make CTA buttons smaller and cleaner */
-            .back-button {
-                padding: 0.8rem 1.5rem;
-                font-size: 0.9rem;
-                font-weight: 500;
-            }
-            
-            /* Hide desktop navigation */
-            .nav-links {
-                display: none;
-            }
-            
-            /* Show mobile menu */
-            .mobile-menu {
-                display: flex;
-            }
-
-            /* Add padding to account for fixed navbar */
-            .main-content {
-                padding-top: 120px;
-            }
-            
-            .page-title {
-                font-size: 2rem;
-            }
-            
-            .privacy-content {
-                padding: 2rem;
-                margin: 0 -1rem 3rem;
-            }
-            
-            .page-header {
-                margin: -20px -1rem 3rem;
-                padding: 2rem 1rem;
-            }
-            
-            .container {
-                padding: 0 1rem;
-            }
-
-            .contact-info {
-                padding: 1.5rem;
-                margin: 0 -1rem 3rem;
-            }
-
-            .back-to-top {
-                bottom: 1rem;
-                right: 1rem;
-                width: 45px;
-                height: 45px;
-            }
-        }
     </style>
 </head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-MNYLCBKK9C"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-MNYLCBKK9C');
-</script>
 <body>
     <!-- Navigation -->
     <nav class="navbar">
