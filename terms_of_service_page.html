@@ -805,6 +805,38 @@
     </button>
 
     <script>
+                // Mobile menu toggle functionality
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            const navLinks = document.querySelector('.nav-links');
+            const mobileMenu = document.querySelector('.mobile-menu');
+            
+            // Toggle mobile menu
+            navLinks.classList.toggle('mobile-active');
+            mobileMenu.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on links
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                const navLinks = document.querySelector('.nav-links');
+                const mobileMenu = document.querySelector('.mobile-menu');
+                navLinks.classList.remove('mobile-active');
+                mobileMenu.classList.remove('active');
+            });
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const navLinks = document.querySelector('.nav-links');
+            const mobileMenu = document.querySelector('.mobile-menu');
+            const navbar = document.querySelector('.navbar');
+            
+            if (!navbar.contains(event.target) && navLinks.classList.contains('mobile-active')) {
+                navLinks.classList.remove('mobile-active');
+                mobileMenu.classList.remove('active');
+            }
+        });
+
         // Back to top functionality
         window.addEventListener('scroll', () => {
             const backToTop = document.querySelector('.back-to-top');
@@ -820,12 +852,7 @@
                 top: 0,
                 behavior: 'smooth'
             });
-        }
 
-        // Mobile menu toggle (placeholder)
-        document.querySelector('.mobile-menu').addEventListener('click', function() {
-            alert('Mobile menu - to be implemented');
-        });
 
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
