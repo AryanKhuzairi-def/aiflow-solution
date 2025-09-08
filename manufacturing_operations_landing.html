@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -145,6 +146,54 @@
             box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
         }
         
+        /* Mobile menu button */
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 5px;
+        }
+        
+        .mobile-menu span {
+            width: 25px;
+            height: 3px;
+            background: var(--text-dark);
+            margin: 3px 0;
+            transition: 0.3s;
+            border-radius: 3px;
+        }
+        
+        /* Mobile Navigation */
+        .nav-links.mobile-active {
+            display: flex !important;
+            position: fixed;
+            top: 80px;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            flex-direction: column;
+            padding: 2rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            z-index: 999;
+        }
+
+        .nav-links.mobile-active li {
+            margin: 0.5rem 0;
+        }
+
+        .mobile-menu.active span:nth-child(1) {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+
+        .mobile-menu.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu.active span:nth-child(3) {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+        
         /* Hero Section */
         .hero {
             min-height: 100vh;
@@ -153,6 +202,8 @@
             align-items: center;
             position: relative;
             overflow: hidden;
+            padding-top: 80px;
+            padding-bottom: 2rem;
         }
         
         .hero::before {
@@ -581,46 +632,211 @@
         
         /* Responsive Design */
         @media (max-width: 768px) {
+            /* Show mobile menu button */
+            .mobile-menu {
+                display: flex;
+            }
+            
+            /* Hide desktop navigation */
             .nav-links {
                 display: none;
+            }
+            
+            /* Make logo/company name smaller and cleaner */
+            .logo {
+                font-size: 1.1rem;
+                font-weight: 600;
+            }
+            
+            .logo-icon {
+                width: 32px;
+                height: 32px;
+                margin-right: 0.5rem;
+            }
+            
+            /* Adjust navbar padding */
+            .nav-container {
+                padding: 0 1rem;
+            }
+            
+            /* Make CTA buttons smaller and cleaner */
+            .btn-primary, .btn-secondary {
+                padding: 0.8rem 1.5rem;
+                font-size: 0.9rem;
+                font-weight: 500;
+            }
+            
+            /* Hide desktop CTA button */
+            .cta-button {
+                display: none;
+            }
+            
+            /* Hero section mobile adjustments - FIXED OVERLAPPING */
+            .hero {
+                padding-top: 80px;
+                padding-bottom: 3rem;
+                min-height: auto; /* Remove fixed height on mobile */
             }
             
             .hero-container {
                 grid-template-columns: 1fr;
                 text-align: center;
-                gap: 2rem;
+                gap: 3rem; /* Increased gap */
+                padding: 2rem 1rem; /* Added padding */
+            }
+            
+            .hero-content {
+                order: 1; /* Ensure content comes first */
+                margin-bottom: 2rem;
+            }
+            
+            .hero-visual {
+                order: 2; /* Visual comes second */
+                margin-top: 2rem;
             }
             
             .hero-content h1 {
                 font-size: 2.5rem;
+                margin-bottom: 1rem;
+            }
+            
+            .hero-content p {
+                font-size: 1.1rem;
+                margin-bottom: 1.5rem;
             }
             
             .hero-buttons {
                 flex-direction: column;
                 align-items: center;
+                gap: 1rem;
+                margin-bottom: 2rem;
             }
             
             .hero-stats {
-                grid-template-columns: repeat(1, 1fr);
+                grid-template-columns: repeat(3, 1fr);
+                gap: 1rem;
+                margin-bottom: 2rem;
             }
             
+            .stat-number {
+                font-size: 1.5rem;
+            }
+            
+            .stat-label {
+                font-size: 0.8rem;
+            }
+            
+            /* Fixed manufacturing demo mobile sizing */
             .manufacturing-demo {
-                width: 300px;
-                height: 320px;
+                width: 100%;
+                max-width: 350px;
+                height: auto;
+                min-height: 300px;
+                padding: 1.5rem;
+                margin: 0 auto;
             }
             
+            .manufacturing-item {
+                padding: 0.8rem;
+                margin-bottom: 0.8rem;
+            }
+            
+            .manufacturing-icon {
+                width: 35px;
+                height: 35px;
+                font-size: 1rem;
+            }
+            
+            .manufacturing-item div {
+                font-size: 0.9rem;
+            }
+            
+            .manufacturing-item div:last-child {
+                font-size: 0.8rem !important;
+            }
+            
+            /* Section spacing adjustments */
+            .features, .use-cases, .roi-section {
+                padding: 3rem 0;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .section-description {
+                font-size: 1rem;
+            }
+            
+            /* Features grid mobile */
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .feature-card {
+                padding: 1.5rem;
+            }
+            
+            /* Use cases mobile */
+            .use-cases-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            /* ROI section mobile */
             .roi-grid {
                 grid-template-columns: 1fr;
                 gap: 2rem;
             }
             
             .roi-metrics {
-                grid-template-columns: 1fr;
+                grid-template-columns: 1fr 1fr;
+                gap: 1rem;
             }
             
+            .roi-metric {
+                padding: 1.5rem 1rem;
+            }
+            
+            .roi-number {
+                font-size: 2rem;
+            }
+            
+            /* CTA buttons mobile */
             .cta-buttons {
                 flex-direction: column;
                 align-items: center;
+                gap: 1rem;
+            }
+            
+            .cta-section h2 {
+                font-size: 2rem;
+            }
+        }
+        
+        /* Extra small mobile devices */
+        @media (max-width: 480px) {
+            .hero-container {
+                padding: 1rem;
+            }
+            
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+            
+            .manufacturing-demo {
+                max-width: 300px;
+                padding: 1rem;
+            }
+            
+            .manufacturing-item {
+                padding: 0.6rem;
+                gap: 0.8rem;
+            }
+            
+            .roi-metrics {
+                grid-template-columns: 1fr;
             }
         }
         
@@ -637,15 +853,6 @@
         }
     </style>
 </head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-KCC3SDDWL6"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-KCC3SDDWL6');
-</script>
 <body>
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
@@ -663,6 +870,12 @@
                 <li><a href="index.html#contact">Contact</a></li>
             </ul>
             
+            <div class="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            
             <a href="index.html#contact" class="cta-button">Get Started</a>
         </div>
     </nav>
@@ -672,7 +885,6 @@
         <div class="hero-container">
             <div class="hero-content">
                 <h1>
-<br>
                     <span class="highlight">Smart Manufacturing</span><br>
                     & Operations<br>
                     AI Automation
@@ -746,8 +958,8 @@
                         </div>
                     </div>
                     <div class="manufacturing-item">
-                        <div class="manufacturing-icon">
-                            <i class="fas fa-shield-alt"></i>
+          		<div class="manufacturing-icon">
+                            <i class="fas fa-chart-line"></i>
                         </div>
                         <div>
                             <div style="color: white; font-weight: 600;">Safety Monitoring</div>
@@ -1002,7 +1214,7 @@
                             <i class="fas fa-check" style="color: var(--manufacturing-color);"></i>
                             <span>Energy Optimization Systems</span>
                         </div>
-                        <div style="display: flex; align-items; center; gap: 0.5rem;">
+                        <div style="display: flex; align-items: center; gap: 0.5rem;">
                             <i class="fas fa-check" style="color: var(--manufacturing-color);"></i>
                             <span>Safety Monitoring Integration</span>
                         </div>
@@ -1246,6 +1458,38 @@
     </section>
 
     <script>
+        // Mobile menu toggle functionality
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            const navLinks = document.querySelector('.nav-links');
+            const mobileMenu = document.querySelector('.mobile-menu');
+            
+            // Toggle mobile menu
+            navLinks.classList.toggle('mobile-active');
+            mobileMenu.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on links
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                const navLinks = document.querySelector('.nav-links');
+                const mobileMenu = document.querySelector('.mobile-menu');
+                navLinks.classList.remove('mobile-active');
+                mobileMenu.classList.remove('active');
+            });
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const navLinks = document.querySelector('.nav-links');
+            const mobileMenu = document.querySelector('.mobile-menu');
+            const navbar = document.querySelector('.navbar');
+            
+            if (!navbar.contains(event.target) && navLinks.classList.contains('mobile-active')) {
+                navLinks.classList.remove('mobile-active');
+                mobileMenu.classList.remove('active');
+            }
+        });
+        
         // Navbar scroll effect
         window.addEventListener('scroll', () => {
             const navbar = document.getElementById('navbar');
@@ -1289,21 +1533,20 @@
         });
 
         // Add hover effects for pricing cards
-        const pricingCards = document.querySelectorAll('[style*="background: var(--light-bg)"]');
+         const pricingCards = document.querySelectorAll('[style*="border: 2px solid #e2e8f0"]');
         pricingCards.forEach(card => {
             card.addEventListener('mouseenter', function() {
                 this.style.transform = 'translateY(-5px)';
-                this.style.boxShadow = '0 8px 25px rgba(0,0,0,0.15)';
+                this.style.boxShadow = '0 8px 30px rgba(0, 0, 0, 0.15)';
             });
+            
             card.addEventListener('mouseleave', function() {
-                if (!this.style.transform.includes('scale')) {
+                if (!this.style.transform.includes('scale(1.05)')) {
                     this.style.transform = 'translateY(0)';
-                    this.style.boxShadow = '0 4px 15px rgba(0,0,0,0.1)';
+                    this.style.boxShadow = 'none';
                 }
             });
         });
     </script>
 </body>
 </html>
-                
-                
