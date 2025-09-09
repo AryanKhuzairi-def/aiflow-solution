@@ -428,11 +428,6 @@
             .contact-info {
                 margin: 0 -1rem 3rem;
             }
-            
-            .highlight-box {
-                padding: 1rem;
-                margin: 1rem -1rem;
-            }
         }
         
         /* Smooth scrolling */
@@ -471,6 +466,15 @@
         }
     </style>
 </head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MNYLCBKK9C"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-MNYLCBKK9C');
+</script>
 <body>
     <!-- Navigation -->
     <nav class="navbar">
@@ -805,7 +809,7 @@
     </button>
 
     <script>
-                // Mobile menu toggle functionality
+        // Mobile menu toggle functionality
         document.querySelector('.mobile-menu').addEventListener('click', function() {
             const navLinks = document.querySelector('.nav-links');
             const mobileMenu = document.querySelector('.mobile-menu');
@@ -852,7 +856,7 @@
                 top: 0,
                 behavior: 'smooth'
             });
-
+        }
 
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
