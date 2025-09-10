@@ -625,121 +625,180 @@
             font-weight: bold;
         }
         
-        /* Pricing Section */
-        .pricing {
+        /* Reviews Section */
+        .reviews {
             padding: 5rem 0;
             background: white;
         }
         
-        .pricing-grid {
+        .reviews-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr); /* 3 columns for desktop */
-            gap: 1.5rem;
-            margin-top: 3rem;
-            max-width: 1400px;
-            margin-left: auto;
-            margin-right: auto;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
         }
-    .pricing-card.enterprise {
-        grid-column: 1 / -1; /* span full row */
-    }
-
-    /* Tablet */
-        @media (max-width: 992px) {
-        .pricing-grid {
-            grid-template-columns: repeat(2, 1fr);
-        }
-        .pricing-card.enterprise {
-            grid-column: 1 / -1; /* still full row */
-         }
-    }
-
-    /* Mobile */
-        @media (max-width: 600px) {
-        .pricing-grid {
-            grid-template-columns: 1fr;
-         }
-    }
-
         
-        .pricing-card {
+        .review-card {
             background: white;
-            border: 2px solid #f1f5f9;
-            border-radius: 20px;
+            border: 1px solid #f1f5f9;
             padding: 2rem;
-            text-align: center;
-            position: relative;
-            transition: all 0.3s ease;
-        }
-    .pricing-card {
-           display: flex;
-           flex-direction: column;
-    }
-
-    .pricing-card a.btn-primary {
-           margin-top: auto; /* keep button at the bottom */
-    }
-        
-        .pricing-card.featured {
-            border-color: var(--primary-color);
-            transform: scale(1.05);
-            box-shadow: 0 8px 30px rgba(99, 102, 241, 0.2);
-        }
-        
-        .pricing-card:hover {
-            border-color: var(--primary-color);
-            box-shadow: 0 8px 30px rgba(99, 102, 241, 0.15);
-        }
-        
-        .pricing-badge {
-            position: absolute;
-            top: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--gradient);
-            color: white;
-            padding: 0.5rem 1rem;
             border-radius: 20px;
-            font-size: 0.8rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .review-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .review-content {
+            flex-grow: 1;
+            margin-bottom: 1.5rem;
+        }
+        
+        .stars {
+            color: #fbbf24;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+        
+        .review-content p {
+            color: var(--text-light);
+            line-height: 1.6;
+            font-style: italic;
+            margin: 0;
+        }
+        
+        .review-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-top: auto;
+        }
+        
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+        
+        .author-info strong {
+            color: var(--text-dark);
+            display: block;
             font-weight: 600;
         }
         
-        .pricing-card h3 {
-            font-size: 1.5rem;
+        .author-info span {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+        
+        /* Add Review Section */
+        .add-review-section {
+            background: var(--light-bg);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .add-review-section h3 {
+            font-size: 1.8rem;
             font-weight: 600;
+            color: var(--text-dark);
             margin-bottom: 1rem;
         }
         
-        .pricing-price {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--primary-color);
-            margin-bottom: 0.5rem;
-        }
-        
-        .pricing-period {
+        .add-review-section p {
             color: var(--text-light);
             margin-bottom: 2rem;
-        }
-        
-        .pricing-features {
-            list-style: none;
-            margin-bottom: 2rem;
-        }
-        
-       .pricing-features li {
-		    padding: 0.75rem 0;
-		    color: #1e293b; 
-		    display: flex;
-		    align-items: center;
-		    gap: 0.5rem;
-		}
-        
-        .pricing-features li::before {
-            content: '✓';
-            color: var(--accent-color);
-            font-weight: bold;
             font-size: 1.1rem;
+        }
+        
+        .review-form {
+            text-align: left;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .review-form input,
+        .review-form select,
+        .review-form textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-family: inherit;
+            color: var(--text-dark);
+            transition: all 0.3s ease;
+        }
+        
+        .review-form input:focus,
+        .review-form select:focus,
+        .review-form textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+        }
+        
+        .review-form select {
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            background: white url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%236366f1'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E") no-repeat right 1rem center;
+            background-size: 1rem;
+            cursor: pointer;
+        }
+        
+        .review-form textarea {
+            resize: vertical;
+            margin-bottom: 1.5rem;
+        }
+        
+        .review-form button {
+            width: 100%;
+            background: var(--gradient);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+        
+        .review-form button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
+        }
+        
+        .review-form button:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
         }
         
         /* Footer */
@@ -904,13 +963,16 @@
 		        grid-template-columns: 1fr;
 		    }
 		    
-		    .pricing-grid {
+		    .reviews-grid {
 		        grid-template-columns: 1fr;
-		        gap: 1rem;
 		    }
 		    
-		    .pricing-card.featured {
-		        transform: none;
+		    .form-row {
+		        grid-template-columns: 1fr;
+		    }
+		    
+		    .add-review-section {
+		        padding: 2rem 1rem;
 		    }
 		    
 		    .about div[style*="grid-template-columns: 1fr 1fr"] {
@@ -924,13 +986,13 @@
 		}
         
         @media (max-width: 1200px) {
-            .pricing-grid {
+            .reviews-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
         }
         
         @media (max-width: 900px) {
-            .pricing-grid {
+            .reviews-grid {
                 grid-template-columns: 1fr;
             }
         }
@@ -1036,12 +1098,12 @@ input, textarea {
                 AIFlow Solution
             </a>
             
-            <ul class="nav-links" 
-                <li><a href="#home" >Home</a></li>
-                <li><a href="#services" >Services</a></li>
-                <li><a href="#pricing" >Pricing</a></li>
-                <li><a href="#about" >About</a></li>
-                <li><a href="#contact" >Contact</a></li>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#reviews">Reviews</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
             
             <a href="#contact" class="cta-button" aria-label="Start Free AI Automation Trial">Get Started</a>
@@ -1213,7 +1275,7 @@ input, textarea {
                 </article>
                 </a>
 
-		<a href="#pricing" style="text-decoration: none; color: inherit;" aria-label="General SME Automation Bundle">
+		<a href="#contact" style="text-decoration: none; color: inherit;" aria-label="General SME Automation Bundle">
                 <article class="service-card fade-in">
                     <div class="service-icon">
                         <i class="fas fa-store" aria-hidden="true"></i>
@@ -1232,88 +1294,185 @@ input, textarea {
         </div>
     </section>
 
-    <!-- Pricing Section -->
-    <section class="pricing" id="pricing">
+    <!-- Customer Reviews Section -->
+    <section class="reviews" id="reviews">
         <div class="container">
             <div class="section-header">
-                <div class="section-subtitle">Flexible Plans</div>
-                <h2 class="section-title">AI Automation Pricing Malaysia</h2>
+                <div class="section-subtitle">Customer Success Stories</div>
+                <h2 class="section-title">What Malaysian Businesses Say About AIFlow</h2>
                 <p class="section-description">
-                    Affordable subscription-based plans designed to scale with your Malaysian business needs. 
-                    No hidden fees, transparent pricing, and ROI-focused automation solutions.
+                    Discover how Malaysian SMEs and enterprises have transformed their operations 
+                    with our AI automation solutions. Real results from real businesses.
                 </p>
             </div>
             
-            <div class="pricing-grid">
-                <article class="pricing-card fade-in">
-                    <h3>Basic Plan</h3>
-                    <div class="pricing-price">RM500</div>
-                    <div class="pricing-period">per month</div>
-                    <ul class="pricing-features">
-                        <li>3 automation workflows</li>
-                        <li>General SME bundle included</li>
-                        <li>Email & WhatsApp integration</li>
-                        <li>Basic AI assistant</li>
-                        <li>Standard support</li>
-                        <li>24/7 automation monitoring</li>
-                    </ul>
-                    <a href="#contact" class="btn-primary" style="width: 100%;" aria-label="Get Started with Basic AI Automation Plan">Get Started</a>   
-             </article>
-           
-            
-             <article class="pricing-card featured fade-in">
-                    <div class="pricing-badge">Most Popular</div>
-                    <h3>Standard Plan</h3>
-                    <div class="pricing-price">RM1,000</div>
-                    <div class="pricing-period">per month</div>
-                    <ul class="pricing-features">
-                        <li>8 automation workflows</li>
-                        <li>Choice of 2 industry bundles</li>
-                        <li>Advanced AI features</li>
-                        <li>Multi-platform connectivity</li>
-                        <li>Priority support</li>
-                        <li>Custom workflow design</li>
-                        <li>Monthly performance reports</li>
-                    </ul>
-                    <a href="#contact" class="btn-primary" style="width: 100%;" aria-label="Get Started with Standard AI Automation Plan">Get Started</a>
+            <div class="reviews-grid">
+                <article class="review-card fade-in">
+                    <div class="review-content">
+                        <div class="stars">
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                        </div>
+                        <p>"AIFlow's accounting automation has saved us 25 hours per week on manual data entry. 
+                        The WhatsApp invoice reminders alone have improved our cash flow by 40%. Highly recommended for Malaysian SMEs!"</p>
+                    </div>
+                    <div class="review-author">
+                        <div class="author-avatar">
+                            <i class="fas fa-user" aria-hidden="true"></i>
+                        </div>
+                        <div class="author-info">
+                            <strong>Sarah Lim</strong>
+                            <span>Finance Director, TechStart Solutions</span>
+                        </div>
+                    </div>
                 </article>
-                
-        
-                <article class="pricing-card fade-in">
-                    <h3>Premium Plan</h3>
-                    <div class="pricing-price">RM2,000</div>
-                    <div class="pricing-period">per month</div>
-                    <ul class="pricing-features">
-                        <li>15 automation workflows</li>
-                        <li>All industry bundles included</li>
-                        <li>Enterprise AI capabilities</li>
-                        <li>Full platform integration</li>
-                        <li>Dedicated account manager</li>
-                        <li>Custom API development</li>
-                        <li>SLA guarantee</li>
-                        <li>Advanced analytics</li>
-                    </ul>
-                    <a href="#contact" class="btn-primary" style="width: 100%;" aria-label="Get Started with Premium AI Automation Plan">Get Started</a>
-                </article>
-                
-        
-                <article class="pricing-card fade-in enterprise">
-                    <h3>Enterprise Plan</h3>
-                    <div class="pricing-price">Custom</div>
-                    <div class="pricing-period">from RM10,000/month</div>
-                    <ul class="pricing-features">
-                        <li>Unlimited workflows</li>
-                        <li>Full enterprise suite</li>
-                        <li>Custom AI model training</li>
-                        <li>White-label solutions</li>
-                        <li>24/7 dedicated support</li>
-                        <li>On-premise deployment</li>
-                        <li>Compliance & security audit</li>
-                        <li>Strategic consultation</li>
-                    </ul>
-                    <a href="#contact" class="btn-primary" style="width: 100%;" aria-label="Contact Sales for Enterprise AI Automation">Contact Sales</a>
 
+                <article class="review-card fade-in">
+                    <div class="review-content">
+                        <div class="stars">
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                        </div>
+                        <p>"The HR automation bundle transformed our recruitment process. AI resume screening cut our hiring time by 60%, 
+                        and automated onboarding ensures no new employee slips through the cracks."</p>
+                    </div>
+                    <div class="review-author">
+                        <div class="author-avatar">
+                            <i class="fas fa-user" aria-hidden="true"></i>
+                        </div>
+                        <div class="author-info">
+                            <strong>Ahmad Rahman</strong>
+                            <span>HR Manager, KL Manufacturing</span>
+                        </div>
+                    </div>
                 </article>
+
+                <article class="review-card fade-in">
+                    <div class="review-content">
+                        <div class="stars">
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                        </div>
+                        <p>"Our logistics operations are now completely automated. Real-time tracking updates and AI demand forecasting 
+                        have reduced our supply chain costs by 35%. AIFlow understands Malaysian business needs perfectly."</p>
+                    </div>
+                    <div class="review-author">
+                        <div class="author-avatar">
+                            <i class="fas fa-user" aria-hidden="true"></i>
+                        </div>
+                        <div class="author-info">
+                            <strong>Jennifer Wong</strong>
+                            <span>Operations Director, Swift Logistics</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="review-card fade-in">
+                    <div class="review-content">
+                        <div class="stars">
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                        </div>
+                        <p>"The customer service automation has been a game-changer. Our AI chatbot handles 80% of customer inquiries, 
+                        and automated follow-ups have increased our conversion rate by 45%. Excellent ROI!"</p>
+                    </div>
+                    <div class="review-author">
+                        <div class="author-avatar">
+                            <i class="fas fa-user" aria-hidden="true"></i>
+                        </div>
+                        <div class="author-info">
+                            <strong>David Tan</strong>
+                            <span>Sales Manager, EcoFriendly Products</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="review-card fade-in">
+                    <div class="review-content">
+                        <div class="stars">
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                        </div>
+                        <p>"Manufacturing automation from AIFlow reduced our downtime by 50%. Predictive maintenance alerts and 
+                        automated reporting have streamlined our entire production process. Worth every ringgit!"</p>
+                    </div>
+                    <div class="review-author">
+                        <div class="author-avatar">
+                            <i class="fas fa-user" aria-hidden="true"></i>
+                        </div>
+                        <div class="author-info">
+                            <strong>Priya Krishnan</strong>
+                            <span>Plant Manager, Precision Engineering</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="review-card fade-in">
+                    <div class="review-content">
+                        <div class="stars">
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                        </div>
+                        <p>"As a small business owner, I was skeptical about AI automation. AIFlow's General SME bundle 
+                        was perfect for us - easy to implement, affordable, and the results speak for themselves. 30% productivity boost!"</p>
+                    </div>
+                    <div class="review-author">
+                        <div class="author-avatar">
+                            <i class="fas fa-user" aria-hidden="true"></i>
+                        </div>
+                        <div class="author-info">
+                            <strong>Raj Patel</strong>
+                            <span>Owner, Digital Marketing Agency</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <!-- Add Review Form -->
+            <div class="add-review-section">
+                <h3>Share Your AIFlow Experience</h3>
+                <p>Have you worked with AIFlow Solution? We'd love to hear about your automation journey!</p>
+                <form id="reviewForm" class="review-form" aria-label="Submit Customer Review">
+                    <div class="form-row">
+                        <input type="text" name="reviewerName" placeholder="Your Name" required aria-label="Your Name">
+                        <input type="text" name="company" placeholder="Company Name" required aria-label="Company Name">
+                    </div>
+                    <div class="form-row">
+                        <input type="email" name="email" placeholder="Email Address" required aria-label="Email Address">
+                        <select name="rating" required aria-label="Star Rating">
+                            <option value="">Select Rating</option>
+                            <option value="5">5 Stars - Excellent</option>
+                            <option value="4">4 Stars - Very Good</option>
+                            <option value="3">3 Stars - Good</option>
+                            <option value="2">2 Stars - Fair</option>
+                            <option value="1">1 Star - Poor</option>
+                        </select>
+                    </div>
+                    <textarea name="reviewText" placeholder="Share your experience with AIFlow's automation solutions..." rows="4" required aria-label="Review Text"></textarea>
+                    <button type="submit" id="reviewSubmitBtn" aria-label="Submit Review">
+                        Submit Review
+                        <div class="loading" id="reviewLoading"></div>
+                    </button>
+                    <div class="form-message" id="reviewMessage" role="status" aria-live="polite"></div>
+                </form>
             </div>
         </div>
     </section>
@@ -1330,7 +1489,7 @@ input, textarea {
                 </p>
             </div>
             
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; margin-top: 3rem;">
+ <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; margin-top: 3rem;">
                 <div>
                     <h3 style="font-size: 1.8rem; margin-bottom: 1.5rem; color: var(--text-dark);">Our Mission</h3>
                     <p style="color: var(--text-light); line-height: 1.6; margin-bottom: 2rem;">
@@ -1413,6 +1572,7 @@ input, textarea {
                 </p>
             </div>
             
+ 
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; margin-top: 3rem;">
                 <div>
                     <h3 style="margin-bottom: 1.5rem; color: var(--text-dark);">Get Your Free Workflow Audit</h3>
@@ -1514,7 +1674,7 @@ input, textarea {
                     <h3>Company</h3>
                     <ul>
                         <li><a href="#about" aria-label="About AIFlow Solution Malaysia">About Us</a></li>
-                        <li><a href="#pricing" aria-label="AI Automation Pricing Malaysia">Pricing</a></li>
+                        <li><a href="#reviews" aria-label="Customer Reviews AIFlow Malaysia">Reviews</a></li>
                         <li><a href="#contact" aria-label="Contact AI Automation Experts">Contact</a></li>
                         <li><a href="aiflow_blog_case_studies.html" aria-label="AI Automation Case Studies Malaysia">Case Studies</a></li>
                         <li><a href="aiflow_blog_case_studies.html" aria-label="AI Automation Blog Malaysia">Blog</a></li>
@@ -1541,7 +1701,7 @@ input, textarea {
 
     <script>
         // Google Apps Script Web App URL - Replace this after deploying your script
-        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxW8PhhXYJjcsyg0YAbQvoMlyW7apx8PzFGz4PoAdjzmrl41-OxvHqBdGWiOE7eE64s/exec';
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxuitcRaf6TG3-AP7gaT-egz26VuSW_N2UnjuTFr074XANGDoEoJl9-CiItXVFEAIiP/exec';
 
         // Navbar scroll effect
         window.addEventListener('scroll', () => {
@@ -1613,6 +1773,7 @@ input, textarea {
             
             // Prepare data for Google Sheets
             const data = {
+		formName: "ContactForm",
                 firstName: formData.get('firstName'),
                 lastName: formData.get('lastName'),
                 email: formData.get('email'),
@@ -1626,7 +1787,7 @@ input, textarea {
                 // Method 1: Try direct POST to Google Apps Script
                 const response = await fetch(GOOGLE_SCRIPT_URL, {
                     method: 'POST',
-                    mode: 'no-cors', // This helps with CORS issues
+                    mode: 'no-cors', 
                     headers: {
                         'Content-Type': 'application/json',
                     },
@@ -1670,6 +1831,63 @@ input, textarea {
                     formMessage.textContent = 'Unable to submit form. Please email us directly at khuzairisulaiman@gmail.com or call +60 11-5346 3627.';
                     formMessage.style.display = 'block';
                 }
+            } finally {
+                // Reset button state
+                submitBtn.disabled = false;
+                loading.style.display = 'none';
+            }
+        });
+
+        // Review form submission
+        document.getElementById('reviewForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const submitBtn = document.getElementById('reviewSubmitBtn');
+            const loading = document.getElementById('reviewLoading');
+            const formMessage = document.getElementById('reviewMessage');
+            
+            // Show loading state
+            submitBtn.disabled = true;
+            loading.style.display = 'inline-block';
+            formMessage.style.display = 'none';
+            
+            // Get form data
+            const formData = new FormData(this);
+            
+            // Prepare data for Google Sheets
+            const data = {
+		formName: "ReviewForm",
+                reviewerName: formData.get('reviewerName'),
+                company: formData.get('company'),
+                email: formData.get('email'),
+                rating: formData.get('rating'),
+                reviewText: formData.get('reviewText'),
+                timestamp: new Date().toISOString()
+             };
+            
+            try {
+                // Method 1: Try direct POST to Google Apps Script
+                const response = await fetch(GOOGLE_SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors', // This helps with CORS issues
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                });
+                
+                // Since we're using no-cors, we can't read the response
+                // We'll assume success if no error is thrown
+                formMessage.className = 'form-message success';
+                formMessage.textContent = 'Thank you for sharing your review! We appreciate your feedback and will review it shortly.';
+                formMessage.style.display = 'block';
+                this.reset();
+                
+            } catch (error) {
+                console.error('Review submission failed:', error);
+                formMessage.className = 'form-message error';
+                formMessage.textContent = 'Unable to submit review at this time. Please try again later or email us directly.';
+                formMessage.style.display = 'block';
             } finally {
                 // Reset button state
                 submitBtn.disabled = false;
